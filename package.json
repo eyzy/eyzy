@@ -1,0 +1,47 @@
+{
+  "name": "eyzy",
+  "version": "v0.0.1",
+  "author": "Kostiantyn",
+  "description": "React UI Toolkit",
+  "homepage": "https://github.com/eyzy/eyzy#readme",
+  "main": "index.ts",
+  "library": "Eyzy",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development rollup -cw",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eyzy/eyzy.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "react-ui"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eyzy/eyzy/issues"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.18",
+    "@types/react-dom": "^16.8.4",
+    "cross-env": "^5.2.0",
+    "rollup": "^1.12.3",
+    "rollup-plugin-scss": "^1.0.1",
+    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.9.3",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.4.5"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  }
+}
