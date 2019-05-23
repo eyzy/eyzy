@@ -4,6 +4,8 @@ dist
 es
 lib
 
+*.js.map
+
 package-lock.json
 
 # dependencies

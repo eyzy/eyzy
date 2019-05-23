@@ -76,7 +76,6 @@
         };
         return Component;
     }(React.Component));
-    //# sourceMappingURL=button.js.map
 
     return Component;
 
