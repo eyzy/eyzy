@@ -9,7 +9,7 @@
 
   cursor: pointer;
   outline: none;
-  padding: 0px 8px;
+  padding: 0px 10px;
   border-radius: 3px;
   border-width: $btn-border-width;
   border-color: $btn-border-color;
@@ -38,12 +38,46 @@
     color: $btn-primary-color;
     background-color: $btn-primary-bg;
 
-    &:hover {
+    &:hover, 
+    &[disabled] {
       background: $btn-primary-bg-hover;
     }
 
     &:focus {
       box-shadow: 0 0 0 0.2em $btn-primary-focused-box-shadow;
     }
+  }
+
+  &-warning {
+    color: $btn-warning-color;
+    background-color: $btn-warning-bg;
+
+    &:hover, 
+    &[disabled] {
+      background: $btn-warning-bg-hover;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2em $btn-warning-focused-box-shadow;
+    }
+  }
+
+  &-danger {
+    color: $btn-danger-color;
+    background-color: $btn-danger-bg;
+
+    &:hover, 
+    &[disabled] {
+      background: $btn-danger-bg-hover;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2em $btn-danger-focused-box-shadow;
+    }
+  }
+
+  &[disabled] {
+    opacity: .4;
+    cursor: default;
   }
 }

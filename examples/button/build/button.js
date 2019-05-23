@@ -100,14 +100,21 @@
         }
         Component.prototype.render = function () {
             return ([
-                React.createElement(Button, { type: "submit" }, "\uD83C\uDF32 Default"),
-                React.createElement(Button, { type: "reset", variant: "primary" }, "\uD83C\uDF32 Primary"),
-                React.createElement(Button, { variant: "warning" }, "\uD83C\uDF32 Warning"),
-                React.createElement(Button, { variant: "danger" }, "\uD83C\uDF32 Danger")
+                React.createElement("p", null,
+                    React.createElement(Button, { type: "submit", key: "0" }, "\uD83C\uDF32 Default"),
+                    React.createElement(Button, { type: "reset", variant: "primary", key: "1" }, "\uD83C\uDF32 Primary"),
+                    React.createElement(Button, { variant: "warning", key: "2" }, "\uD83C\uDF32 Warning"),
+                    React.createElement(Button, { variant: "danger", key: "3" }, "\uD83C\uDF32 Danger")),
+                React.createElement("p", null,
+                    React.createElement(Button, { type: "submit", key: "0", disabled: true }, "\uD83C\uDF32 Default \uD83C\uDF32"),
+                    React.createElement(Button, { type: "reset", variant: "primary", key: "1", disabled: true }, "\uD83C\uDF32 Primary \uD83C\uDF32"),
+                    React.createElement(Button, { variant: "warning", key: "2", disabled: true }, "\uD83C\uDF32 Warning \uD83C\uDF32"),
+                    React.createElement(Button, { variant: "danger", key: "3", disabled: true }, "\uD83C\uDF32 Danger \uD83C\uDF32"))
             ]);
         };
         return Component;
     }(React.Component));
+    //# sourceMappingURL=button.js.map
 
     return Component;
 
