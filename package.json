@@ -7,7 +7,7 @@
   "main": "index.ts",
   "library": "Eyzy",
   "scripts": {
-    "start": "cross-env NODE_ENV=development rollup -cw",
+    "start": "cross-env NODE_ENV=development rollup -cw --config ./config/rollup.config.dev.js",
     "test": "npm test"
   },
   "repository": {
@@ -36,6 +36,7 @@
     "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-typescript": "^1.0.1",
     "tslib": "^1.9.3",
+    "tslint": "^5.16.0",
     "tslint-react": "^4.0.0",
     "typescript": "^3.4.5"
   },

@@ -1,0 +1,32 @@
+@import "../../common/style/variables.scss";
+@import "../../common/style/mixins.scss";
+
+.btn {
+  @include flex-inline();
+
+  background-color: $btn-default-bg;
+  color: $btn-default-color;
+
+  outline: none;
+  padding: 0px 8px;
+  border-radius: 3px;
+  border-width: $btn-border-width;
+  border-color: $btn-border-color;
+
+  height: 2.28571em;
+  line-height: 2.28571em;
+
+  transition: background 0.1s ease-out 0s;
+
+  &:hover {
+    background: $btn-default-bg-hovered;
+  }
+
+  &:focus {
+    background: $btn-default-bg-focused;
+  }
+
+  &:active {
+    background: $btn-default-bg-active;
+  }
+}

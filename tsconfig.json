@@ -24,6 +24,6 @@
     "tests"
   ],
   "include": [
-    "components", "index.ts"
+    "src/components", "index.ts"
   ]
 }
