@@ -56,10 +56,42 @@
         return t;
     }
 
+    function cn() {
+        var names = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            names[_i] = arguments[_i];
+        }
+        var result = [];
+        for (var i = 0; i < names.length; i++) {
+            var item = names[i];
+            if (!item) {
+                continue;
+            }
+            if (Array.isArray(item) && item.length) {
+                result.push(cn.apply(null, item));
+            }
+            else if ('object' === typeof item) {
+                for (var _a = 0, item_1 = item; _a < item_1.length; _a++) {
+                    var _b = item_1[_a], key = _b[0], value = _b[1];
+                    if (value) {
+                        names.push(key);
+                    }
+                }
+            }
+            else {
+                result.push(item);
+            }
+        }
+        return result.join(' ');
+    }
+    //# sourceMappingURL=classNames.js.map
+
     var Button = React.memo(function Button(props) {
-        var children = props.children, rest = __rest(props, ["children"]);
-        return (React.createElement("button", __assign({ className: "btn" }, rest), children));
+        var children = props.children, className = props.className, type = props.type, variant = props.variant, rest = __rest(props, ["children", "className", "type", "variant"]);
+        var classNames = cn('btn', variant ? "btn-" + variant : '', className);
+        return (React.createElement("button", __assign({ className: classNames }, rest), children));
     });
+    //# sourceMappingURL=index.js.map
 
     var Component = /** @class */ (function (_super) {
         __extends(Component, _super);
@@ -69,9 +101,9 @@
         Component.prototype.render = function () {
             return ([
                 React.createElement(Button, { type: "submit" }, "\uD83C\uDF32 Default"),
-                React.createElement(Button, { type: "submit" }, "\uD83C\uDF32 Primary"),
-                React.createElement(Button, { type: "submit" }, "\uD83C\uDF32 Warning"),
-                React.createElement(Button, { type: "submit" }, "\uD83C\uDF32 Danger")
+                React.createElement(Button, { type: "reset", variant: "primary" }, "\uD83C\uDF32 Primary"),
+                React.createElement(Button, { variant: "warning" }, "\uD83C\uDF32 Warning"),
+                React.createElement(Button, { variant: "danger" }, "\uD83C\uDF32 Danger")
             ]);
         };
         return Component;

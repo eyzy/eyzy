@@ -7,26 +7,43 @@
   background-color: $btn-default-bg;
   color: $btn-default-color;
 
+  cursor: pointer;
   outline: none;
   padding: 0px 8px;
   border-radius: 3px;
   border-width: $btn-border-width;
   border-color: $btn-border-color;
 
+  font-weight: 500;
+
   height: 2.28571em;
   line-height: 2.28571em;
 
-  transition: background 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
 
   &:hover {
-    background: $btn-default-bg-hovered;
+    background: $btn-default-bg-hover;
   }
 
   &:focus {
-    background: $btn-default-bg-focused;
+    outline: 0;
+    box-shadow: 0 0 0 0.2em $btn-default-focused-box-shadow;
   }
 
   &:active {
-    background: $btn-default-bg-active;
+    outline-width: 0;
+  }
+
+  &-primary {
+    color: $btn-primary-color;
+    background-color: $btn-primary-bg;
+
+    &:hover {
+      background: $btn-primary-bg-hover;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2em $btn-primary-focused-box-shadow;
+    }
   }
 }

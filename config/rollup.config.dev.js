@@ -35,5 +35,20 @@ let configFor = function(name) {
 }
 
 export default [
+  {
+    input: `src/index.ts`,
+    plugins: [
+      typescript(),
+      scss({
+        outputStyle: 'compressed'
+      })
+    ],
+    output: {
+      sourcemap: true,
+      format: 'umd',
+      file: `dist/eyzy.js`,
+      name: 'Eyzy'
+    }
+  },
   configFor('button')
 ]

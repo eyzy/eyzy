@@ -1,14 +1,18 @@
 $eyzy-prefix: '';
 
+$primary-color: #0052cc;
+$secondary-color: #f5f6f8;
+
 $btn-border-width: 0;
 $btn-border-color: red;
 
-$btn-default-bg: rgba(9, 30, 66, 0.04);
-$btn-default-bg-hovered: rgba(9, 30, 66, 0.08);
-$btn-default-bg-focused: rgba(9, 30, 66, 0.04);
-$btn-default-bg-active: rgba(9, 30, 66, 0.20);
-
+$btn-default-bg: $secondary-color;
+$btn-default-bg-hover: darken($secondary-color, 5%);
+$btn-default-focused-box-shadow: lighten($secondary-color, 5%);
 $btn-default-color: rgb(80, 95, 121);
 
-$default-color: blue;
-$primary-color: red;
+$btn-primary-bg: $primary-color;
+$btn-primary-bg-hover: darken($primary-color, 5%);
+$btn-primary-focused-box-shadow: lighten($primary-color, 30%);
+$btn-primary-color: #fff;
+

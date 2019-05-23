@@ -9,15 +9,15 @@ export default class Component extends React.Component {
           🌲
           Default
         </Button>,
-        <Button type="reset">
+        <Button type="reset" variant="primary">
           🌲
           Primary
         </Button>,
-        <Button>
+        <Button variant="warning">
           🌲
           Warning
         </Button>,
-        <Button>
+        <Button variant="danger">
           🌲
           Danger
         </Button>

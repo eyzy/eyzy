@@ -1,3 +1,3 @@
-import Button from './src/components/button'
+import Button from './components/button'
 
 export { Button }
