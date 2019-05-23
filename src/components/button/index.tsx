@@ -5,6 +5,9 @@ import './style.scss'
 
 export interface BaseButtonProps {
   variant?: string
+  fit?: boolean
+  shape?: 'circle' | 'extended',
+  size?: 'sm' | 'lg'
 }
 
 export type ButtonProps = Partial<AnchorHTMLAttributes<any> & ButtonHTMLAttributes<any> & BaseButtonProps>
@@ -15,12 +18,18 @@ export default React.memo(function Button(props: ButtonProps) {
     className,
     type,
     variant,
+    fit,
+    shape,
+    size,
     ...rest
   } = props
 
   const classNames = cn(
     'btn',
     variant ? `btn-${variant}` : '',
+    shape ? `btn-${shape}` : '',
+    size ? `${size}` : '',
+    fit ? 'btn-fit' : '',
     className
   )
 

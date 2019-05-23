@@ -22,6 +22,10 @@ export default class Component extends React.Component {
             🌲
             Danger
           </Button>
+          <Button variant="success" key="4">
+            🌲
+            Success
+          </Button>
         </p>,
         <p>
           <Button type="submit" key="0" disabled>
@@ -44,7 +48,26 @@ export default class Component extends React.Component {
             Danger
             🌲
           </Button>
+          <Button variant="success" key="4" disabled>
+            🌲
+            Success
+          </Button>
+        </p>,
+        <p>
+          <Button fit>Fit container</Button>
+        </p>,
+        <p>
+          <Button fit variant="primary">Fit container2</Button>
+        </p>,
+        <p>
+          <Button variant="danger" shape="circle"><i className="fa fa-anchor"/></Button>
+          <Button variant="primary" shape="extended">Extended button</Button>
+        </p>,
+        <p>
+          <Button variant="danger" size="sm" shape="circle"><i className="fa fa-anchor"/></Button>
+          <Button variant="primary" size="sm" shape="extended">Extended button</Button>
         </p>
+          
       ]
     )
   }
