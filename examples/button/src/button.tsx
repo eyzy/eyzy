@@ -10,19 +10,63 @@ export default class Component extends React.Component {
             🌲
             Default
           </Button>
-          <Button type="reset" variant="primary" key="1">
+          <Button type="reset" intent="primary" key="1">
             🌲
             Primary
           </Button>
-          <Button variant="warning" key="2">
+          <Button intent="warning" key="2">
             🌲
             Warning
           </Button>
-          <Button variant="danger" key="3">
+          <Button intent="danger" key="3">
             🌲
             Danger
           </Button>
-          <Button variant="success" key="4">
+          <Button intent="success" key="4">
+            🌲
+            Success
+          </Button>
+        </p>,
+        <p>
+          <Button appearance="minimal" type="submit" key="0">
+            🌲
+            Default
+          </Button>
+          <Button appearance="minimal" type="reset" intent="primary" key="1">
+            🌲
+            Primary
+          </Button>
+          <Button appearance="minimal" intent="warning" key="2">
+            🌲
+            Warning
+          </Button>
+          <Button appearance="minimal" intent="danger" key="3">
+            🌲
+            Danger
+          </Button>
+          <Button appearance="minimal" intent="success" key="4">
+            🌲
+            Success
+          </Button>
+        </p>,
+        <p>
+          <Button appearance="outlined" type="submit" key="0">
+            🌲
+            Default
+          </Button>
+          <Button appearance="outlined" type="reset" intent="primary" key="1">
+            🌲
+            Primary
+          </Button>
+          <Button appearance="outlined" intent="warning" key="2">
+            🌲
+            Warning
+          </Button>
+          <Button appearance="outlined" intent="danger" key="3">
+            🌲
+            Danger
+          </Button>
+          <Button appearance="outlined" intent="success" key="4">
             🌲
             Success
           </Button>
@@ -33,22 +77,22 @@ export default class Component extends React.Component {
             Default
             🌲
           </Button>
-          <Button type="reset" variant="primary" key="1" disabled>
+          <Button type="reset" intent="primary" key="1" disabled>
             🌲
             Primary
             🌲
           </Button>
-          <Button variant="warning" key="2" disabled>
+          <Button intent="warning" key="2" disabled>
             🌲
             Warning
             🌲
           </Button>
-          <Button variant="danger" key="3" disabled>
+          <Button intent="danger" key="3" disabled>
             🌲
             Danger
             🌲
           </Button>
-          <Button variant="success" key="4" disabled>
+          <Button intent="success" key="4" disabled>
             🌲
             Success
           </Button>
@@ -57,15 +101,13 @@ export default class Component extends React.Component {
           <Button fit>Fit container</Button>
         </p>,
         <p>
-          <Button fit variant="primary">Fit container2</Button>
+          <Button fit intent="primary">Fit container2</Button>
         </p>,
         <p>
-          <Button variant="danger" shape="circle"><i className="fa fa-anchor"/></Button>
-          <Button variant="primary" shape="extended">Extended button</Button>
-        </p>,
-        <p>
-          <Button variant="danger" size="sm" shape="circle"><i className="fa fa-anchor"/></Button>
-          <Button variant="primary" size="sm" shape="extended">Extended button</Button>
+          <Button shape="circle"><i className="fa fa-plus"/></Button>
+          <Button intent="danger" shape="circle"><i className="fa fa-trash"/></Button>
+          <Button intent="primary" shape="extended">Extended button</Button>
+          <Button intent="warning" shape="rect">Rectangle button</Button>
         </p>
           
       ]

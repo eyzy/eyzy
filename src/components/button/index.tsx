@@ -4,9 +4,10 @@ import { cn } from '../../common/classNames'
 import './style.scss'
 
 export interface BaseButtonProps {
-  variant?: string
+  intent?: 'primary' | 'warning' | 'success' | 'danger'
+  appearance?: 'minimal' | 'outlined'
   fit?: boolean
-  shape?: 'circle' | 'extended',
+  shape?: 'circle' | 'extended' | 'rect',
   size?: 'sm' | 'lg'
 }
 
@@ -14,22 +15,24 @@ export type ButtonProps = Partial<AnchorHTMLAttributes<any> & ButtonHTMLAttribut
 
 export default React.memo(function Button(props: ButtonProps) {
   const {
-    children,
+    appearance,
     className,
-    type,
-    variant,
-    fit,
+    children,
+    intent,
     shape,
+    type,
     size,
+    fit,
     ...rest
   } = props
 
   const classNames = cn(
     'btn',
-    variant ? `btn-${variant}` : '',
-    shape ? `btn-${shape}` : '',
-    size ? `${size}` : '',
-    fit ? 'btn-fit' : '',
+    appearance && `btn-${appearance}`,
+    intent && `btn-${intent}`,
+    shape && `btn-${shape}`,
+    size && `${size}`,
+    fit && 'btn-fit',
     className
   )
 
