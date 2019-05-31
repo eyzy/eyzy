@@ -1,32 +1,182 @@
-
-// TODO: not good. Save color for variant 
-$disabled-bg: rgba(8, 31, 70, 0.04);
-$disabled-color: #9fa5af;
+/*
+Как в твитере, фокус светлее, чем активное (бордер или шадоу)
+*/
 
 $btn-border-width: 0;
-$btn-border-color: red;
+$btn-shadow-spread: 0.2em; 
 
-$btn-default-bg: $secondary-color;
-$btn-default-bg-hover: darken($secondary-color, 5%);
-$btn-default-focused-box-shadow: #7db5ff;
-$btn-default-color: rgb(80, 95, 121);
+$btn-default-color: #55677d;
+$btn-default-background-color: $secondary-color;
+$btn-default-background-color-hover: darken($btn-default-background-color, 5%);
 
-$btn-primary-bg: $primary-color;
-$btn-primary-bg-hover: darken($primary-color, 5%);
-$btn-primary-focused-box-shadow: lighten($primary-color, 30%);
-$btn-primary-color: #fff;
 
-$btn-warning-bg: $warning-color;
-$btn-warning-bg-hover: darken($warning-color, 5%);
-$btn-warning-focused-box-shadow: lighten($warning-color, 30%);
-$btn-warning-color: #1b2c4a;
+$btn-default: (
+  "color": #55677d,
+  "background-color": $secondary-color,
+  "hover": (
+    "background-color": #d8e0e8
+  ),
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": none
+);
 
-$btn-danger-bg: $danger-color;
-$btn-danger-bg-hover: darken($danger-color, 5%);
-$btn-danger-focused-box-shadow: lighten($danger-color, 30%);
-$btn-danger-color: #fff;
+$btn-default-hover: (
+  "color": map-get($btn-default, 'color'),
+  "background-color": darken($secondary-color, 5%),
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": none
+);
 
-$btn-success-bg: $success-color;
-$btn-success-bg-hover: darken($success-color, 5%);
-$btn-success-focused-box-shadow: lighten($success-color, 30%);
-$btn-success-color: #fff;
+$btn-default-active: (
+  "color": darken($secondary-color, 35%),
+  "background-color": $secondary-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": 0 0 0 $btn-shadow-spread #768cb8
+);
+
+$btn-default-focus: (
+  "color": darken($secondary-color, 35%),
+  "background-color": $secondary-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": 0 0 0 $btn-shadow-spread #a8b8d9
+);
+
+
+$btn-primary: (
+  "color": #fff,
+  "background-color": $primary-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": none
+);
+
+$btn-primary-hover: (
+  "color": #fff,
+  "background-color": darken($primary-color, 5%),
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": none
+);
+
+$btn-primary-active: (
+  "color": #fff,
+  "background-color": $primary-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": 0 0 0 $btn-shadow-spread lighten($primary-color, 30%)
+);
+
+$btn-primary-focus: (
+  "color": #fff,
+  "background-color": $primary-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": 0 0 0 $btn-shadow-spread lighten($primary-color, 50%)
+);
+
+
+
+$btn-warning: (
+  "color": #1b2c4a,
+  "background-color": $warning-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": none
+);
+
+$btn-warning-hover: (
+  "color": #1b2c4a,
+  "background-color": darken($warning-color, 5%),
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": none
+);
+
+$btn-warning-active: (
+  "color": #1b2c4a,
+  "background-color": $warning-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": 0 0 0 $btn-shadow-spread lighten($warning-color, 20%)
+);
+
+$btn-warning-focus: (
+  "color": #1b2c4a,
+  "background-color": $warning-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": 0 0 0 $btn-shadow-spread lighten($warning-color, 30%)
+);
+
+
+
+$btn-danger: (
+  "color": #fff,
+  "background-color": $danger-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": none
+);
+
+$btn-danger-hover: (
+  "color": #fff,
+  "background-color": darken($danger-color, 5%),
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": none
+);
+
+$btn-danger-active: (
+  "color": #fff,
+  "background-color": $danger-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": 0 0 0 $btn-shadow-spread lighten($danger-color, 20%)
+);
+
+$btn-danger-focus: (
+  "color": #fff,
+  "background-color": $danger-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": 0 0 0 $btn-shadow-spread lighten($danger-color, 30%)
+);
+
+
+
+$btn-success: (
+  "color": #fff,
+  "background-color": $success-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": none
+);
+
+
+$btn-success-hover: (
+  "color": #fff,
+  "background-color": darken($success-color, 5%),
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": none
+);
+
+$btn-success-active: (
+  "color": #fff,
+  "background-color": $success-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": 0 0 0 $btn-shadow-spread lighten($success-color, 20%)
+);
+
+$btn-success-focus: (
+  "color": #fff,
+  "background-color": $success-color,
+  "border-color": #9fa5af,
+  "border-width": $btn-border-width,
+  "shadow": 0 0 0 $btn-shadow-spread lighten($success-color, 30%)
+);

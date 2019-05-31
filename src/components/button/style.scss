@@ -1,140 +1,203 @@
 @import "../../common/style/variables.scss";
 @import "../../common/style/mixins.scss";
 
+@mixin colorSet($set, $diffSet) {
+  @if map-get($set, 'color') != map-get($diffSet, 'color') {
+    color: map-get($set, 'color');
+  }
+
+  @if map-get($set, 'background-color') != map-get($diffSet, 'background-color') {
+    background-color: map-get($set, 'background-color');
+  }
+
+  @if map-get($set, 'border-color') != map-get($diffSet, 'border-color') {
+    border-color: map-get($set, 'border-color');
+  }
+
+  @if map-get($set, 'border-width') != map-get($diffSet, 'border-width') {
+    border-width: map-get($set, 'border-width');
+  }
+
+  @if map-get($set, 'shadow') != map-get($diffSet, 'shadow') {
+    box-shadow: map-get($set, 'shadow');
+  }
+}
+
+
 .btn {
   @include flex-inline();
 
-  background-color: $btn-default-bg;
-  color: $btn-default-color;
+  background-color: map-get($btn-default, 'background-color');
+  color: map-get($btn-default, 'color');
 
   cursor: pointer;
   outline: none;
   padding: 0px 10px;
-  border-radius: 3px;
-  border-width: $btn-border-width;
-  border-color: $btn-border-color;
+  border-radius: $border-radius;
+  border-width: map-get($btn-default, 'border-width');
+  border-color: map-get($btn-default, 'border-color');
+  box-shadow: map-get($btn-default, 'shadow');
 
   font-weight: 500;
 
-  height: 2.28571em;
-  line-height: 2.28571em;
+  height: $line-height;
+  line-height: $line-height;
 
   transition: all 0.1s ease-out 0s;
 
-  &-extended {
-    border-radius: 20px;
-    padding: 0 16px;
-  }
-
-  &-circle {
-    border-radius: 50%;
-    width: 2.28571em;
-    height: 2.28571em;
-  }
-
-  &-rect {
-    border-radius: 0;
-  }
-
-  &-fit {
-    display: flex;
-    width: 100%;
-  }
-
   &:hover {
-    background: $btn-default-bg-hover;
+    @include colorSet($btn-default-hover, $btn-default);
   }
 
   &:focus {
-    outline: 0;
-    box-shadow: 0 0 0 0.2em $btn-default-focused-box-shadow;
+    @include colorSet($btn-default-focus, $btn-default);
   }
 
   &:active {
-    outline-width: 0;
+    @include colorSet($btn-default-active, $btn-default);
   }
 
+  &[disabled] {
+    opacity: .4;
+    cursor: default;
+
+    &:hover {
+      background-color: map-get($btn-default, 'background-color');
+    }
+  }
+
+  
   &.btn-primary {
-    color: $btn-primary-color;
-    background-color: $btn-primary-bg;
+    color: map-get($btn-primary, 'color');
+    background-color: map-get($btn-primary, 'background-color');
+    border-width: map-get($btn-primary, 'border-width');
+    border-color: map-get($btn-primary, 'border-color');
+    box-shadow: map-get($btn-primary, 'shadow');
 
     &:hover, 
     &[disabled] {
-      background: $btn-primary-bg-hover;
+      @include colorSet($btn-primary-hover, $btn-primary);
     }
 
     &:focus {
-      box-shadow: 0 0 0 0.2em $btn-primary-focused-box-shadow;
+      @include colorSet($btn-primary-focus, $btn-primary);
+    }
+    
+    &:active {
+      @include colorSet($btn-primary-active, $btn-primary);
     }
   }
+
   &.btn-warning {
-    color: $btn-warning-color;
-    background-color: $btn-warning-bg;
+    color: map-get($btn-warning, 'color');
+    background-color: map-get($btn-warning, 'background-color');
+    border-width: map-get($btn-warning, 'border-width');
+    border-color: map-get($btn-warning, 'border-color');
+    box-shadow: map-get($btn-warning, 'shadow');
 
     &:hover, 
     &[disabled] {
-      background: $btn-warning-bg-hover;
+      @include colorSet($btn-warning-hover, $btn-warning);
     }
 
     &:focus {
-      box-shadow: 0 0 0 0.2em $btn-warning-focused-box-shadow;
+      @include colorSet($btn-warning-focus, $btn-warning);
+    }
+    
+    &:active {
+      @include colorSet($btn-warning-active, $btn-warning);
     }
   }
-
+  
   &.btn-danger {
-    color: $btn-danger-color;
-    background-color: $btn-danger-bg;
+    color: map-get($btn-danger, 'color');
+    background-color: map-get($btn-danger, 'background-color');
+    border-width: map-get($btn-danger, 'border-width');
+    border-color: map-get($btn-danger, 'border-color');
+    box-shadow: map-get($btn-danger, 'shadow');
 
     &:hover, 
     &[disabled] {
-      background: $btn-danger-bg-hover;
+      @include colorSet($btn-danger-hover, $btn-danger);
     }
 
     &:focus {
-      box-shadow: 0 0 0 0.2em $btn-danger-focused-box-shadow;
+      @include colorSet($btn-danger-focus, $btn-danger);
+    }
+    
+    &:active {
+      @include colorSet($btn-danger-active, $btn-danger);
     }
   }
-
+  
   &.btn-success {
-    color: $btn-success-color;
-    background-color: $btn-success-bg;
+    color: map-get($btn-success, 'color');
+    background-color: map-get($btn-success, 'background-color');
+    border-width: map-get($btn-success, 'border-width');
+    border-color: map-get($btn-success, 'border-color');
+    box-shadow: map-get($btn-success, 'shadow');
 
     &:hover, 
     &[disabled] {
-      background: $btn-success-bg-hover;
+      @include colorSet($btn-success-hover, $btn-success);
     }
 
     &:focus {
-      box-shadow: 0 0 0 0.2em $btn-success-focused-box-shadow;
+      @include colorSet($btn-success-focus, $btn-success);
+    }
+    
+    &:active {
+      @include colorSet($btn-success-active, $btn-success);
     }
   }
 
   &.btn-outlined {
     background: none;
-    border: 1px solid $btn-default-bg;
+    border: 1px solid map-get($btn-default, 'color');
 
-    &.btn-warning {
-      border: 1px solid $btn-warning-bg;
-      color: $btn-warning-bg;
-
-      :hover {
-        color: $btn-warning-color;
-      }
+    &:hover {
+      color: map-get($btn-default, 'color');
+      background-color: map-get($btn-default, 'background-color');
     }
 
     &.btn-primary {
-      border: 1px solid $btn-primary-bg;
-      color: $btn-primary-bg;
+      border: 1px solid map-get($btn-primary, 'background-color');
+      color: map-get($btn-primary, 'background-color');
+
+      &:hover {
+        color: map-get($btn-primary, 'color');
+        background-color: map-get($btn-primary, 'background-color');
+      }
+    }
+
+    &.btn-warning {
+      border: 1px solid map-get($btn-warning, 'background-color');
+      color: map-get($btn-warning, 'background-color');
+
+      &:hover {
+        color: map-get($btn-warning, 'color');
+        background-color: map-get($btn-warning, 'background-color');
+      }
     }
 
     &.btn-danger {
-      border: 1px solid $btn-danger-bg;
-      color: $btn-danger-bg;
+      border: 1px solid map-get($btn-danger, 'background-color');
+      color: map-get($btn-danger, 'background-color');
+    
+      &:hover {
+        color: map-get($btn-danger, 'color');
+        background-color: map-get($btn-danger, 'background-color');
+      }
     }
 
     &.btn-success {
-      border: 1px solid $btn-success-bg;
-      color: $btn-success-bg;
+      border: 1px solid map-get($btn-success, 'background-color');
+      color: map-get($btn-success, 'background-color');
+    
+      &:hover {
+        color: map-get($btn-success, 'color');
+        background-color: map-get($btn-success, 'background-color');
+      }
     }
   }
 
@@ -155,25 +218,49 @@
     }
 
     &.btn-warning {
-      color: $btn-warning-bg;
+      color: map-get($btn-warning, 'background-color');
     }
 
     &.btn-primary {
-      color: $btn-primary-bg;
+      color: map-get($btn-primary, 'background-color');
     }
 
     &.btn-danger {
-      color: $btn-danger-bg;
+      color: map-get($btn-danger, 'background-color');
     }
 
     &.btn-success {
-      color: $btn-success-bg;
+      color: map-get($btn-success, 'background-color');
     }
   }
 
-  &[disabled] {
-    background: inherit;
-    opacity: .4;
-    cursor: default;
+  &.sm {
+    height: $line-height-sm;
+    line-height: $line-height-sm;
+  }
+
+  &.lg {
+    height: $line-height-lg;
+    line-height: $line-height-lg;
+  }
+
+  &-extended {
+    border-radius: 20px;
+    padding: 0 16px;
+  }
+
+  &-circle {
+    border-radius: 50%;
+    width: $line-height;
+    height: $line-height;
+  }
+
+  &-rect {
+    border-radius: 0;
+  }
+
+  &-fit {
+    display: flex;
+    width: 100%;
   }
 }

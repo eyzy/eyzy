@@ -7,7 +7,6 @@ export default class Component extends React.Component {
       [
         <p>
           <Button type="submit" key="0">
-            🌲
             Default
           </Button>
           <Button type="reset" intent="primary" key="1">
@@ -108,8 +107,24 @@ export default class Component extends React.Component {
           <Button intent="danger" shape="circle"><i className="fa fa-trash"/></Button>
           <Button intent="primary" shape="extended">Extended button</Button>
           <Button intent="warning" shape="rect">Rectangle button</Button>
+        </p>,
+        <p>
+          <Button intent="danger" type="submit" key="0" size="sm">
+            🌲
+            Small
+            🌲
+          </Button>
+          <Button intent="danger" type="reset" key="1">
+            🌲
+            Default
+            🌲
+          </Button>
+          <Button intent="danger" key="2" size="lg">
+            🌲
+            Big
+            🌲
+          </Button>
         </p>
-          
       ]
     )
   }
