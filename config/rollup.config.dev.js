@@ -50,5 +50,6 @@ export default [
       name: 'Eyzy'
     }
   },
-  configFor('button')
+  configFor('button'),
+  configFor('input')
 ]
