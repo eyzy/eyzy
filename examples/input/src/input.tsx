@@ -1,5 +1,7 @@
 import React from 'react'
 import Input from '../../../src/components/Input'
+import Button from '../../../src/components/Button'
+
 
 export default class Component extends React.Component {
   render() {
@@ -37,6 +39,9 @@ export default class Component extends React.Component {
           <Input intent="warning" width="150px" />
           <Input intent="success" width="150px" />
         </p>,
+        <p>
+          <Input/><Button>Atata</Button>
+        </p>
       ]
     )
   }

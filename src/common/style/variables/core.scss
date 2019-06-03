@@ -1,14 +1,26 @@
-$primary-color: #0052cc;
+$base-color: #efefef;
+$primary-color: #2100FF;
 $secondary-color: #dae2eb;
-$warning-color: #f9a700;
-$danger-color: #de3207;
-$success-color: #2ecc40;
+$warning-color: #FF9505;
+$danger-color: #F20F22;
+$success-color: #2ECC40;
 
-$border-radius: 3px;
-$border-color: #9fa5af;
+$base-text-color: #333;
+$primary-text-color: #0052cc;
+$secondary-text-color: #dae2eb;
+$warning-text-color: #f9a700;
+$danger-text-color: #de3207;
+$success-text-color: #2ecc40;
+
+$border-radius: 4px;
+$border-color: transparent;
+$border-width: 0;
+
+$input-border-color: #b2b2b2;
 
 $line-height: 2.28571em;
 $line-height-sm: 1.6em; 
 $line-height-lg: 2.97142em;
 
-$text-color: rgba(0, 0, 0, .7);
+$disabled-opacity: .4;
+$disabled-cursor: default;

@@ -1,130 +1,98 @@
 import React from 'react'
 import Button from '../../../src/components/button'
+import ButtonGroup from '../../../src/components/button/group'
+
 
 export default class Component extends React.Component {
   render() {
     return (
       [
-        <p>
-          <Button type="submit" key="0">
-            Default
-          </Button>
-          <Button type="reset" intent="primary" key="1">
-            🌲
-            Primary
-          </Button>
-          <Button intent="warning" key="2">
-            🌲
-            Warning
-          </Button>
-          <Button intent="danger" key="3">
-            🌲
-            Danger
-          </Button>
-          <Button intent="success" key="4">
-            🌲
-            Success
-          </Button>
+        <p key="0">
+          <Button type="submit">Default</Button>
+          <Button type="reset" intent="primary">🌲 Primary</Button>
+          <Button intent="warning">🌲 Warning</Button>
+          <Button intent="danger">🌲 Danger</Button>
+          <Button intent="success">🌲 Success</Button>
         </p>,
-        <p>
-          <Button appearance="minimal" type="submit" key="0">
-            🌲
-            Default
-          </Button>
-          <Button appearance="minimal" type="reset" intent="primary" key="1">
-            🌲
-            Primary
-          </Button>
-          <Button appearance="minimal" intent="warning" key="2">
-            🌲
-            Warning
-          </Button>
-          <Button appearance="minimal" intent="danger" key="3">
-            🌲
-            Danger
-          </Button>
-          <Button appearance="minimal" intent="success" key="4">
-            🌲
-            Success
-          </Button>
+        <p key="1">
+          <Button appearance="minimal" type="submit">🌲Default</Button>
+          <Button appearance="minimal" type="reset" intent="primary">🌲  Primary</Button>
+          <Button appearance="minimal" intent="warning">🌲  Warning</Button>
+          <Button appearance="minimal" intent="danger">🌲  Danger</Button>
+          <Button appearance="minimal" intent="success">🌲  Success</Button>
         </p>,
-        <p>
-          <Button appearance="outlined" type="submit" key="0">
-            🌲
-            Default
-          </Button>
-          <Button appearance="outlined" type="reset" intent="primary" key="1">
-            🌲
-            Primary
-          </Button>
-          <Button appearance="outlined" intent="warning" key="2">
-            🌲
-            Warning
-          </Button>
-          <Button appearance="outlined" intent="danger" key="3">
-            🌲
-            Danger
-          </Button>
-          <Button appearance="outlined" intent="success" key="4">
-            🌲
-            Success
-          </Button>
+        <p key="2">
+          <Button appearance="outlined" type="submit">🌲 Default</Button>
+          <Button appearance="outlined" type="reset" intent="primary">🌲 Primary</Button>
+          <Button appearance="outlined" intent="warning">🌲 Warning</Button>
+          <Button appearance="outlined" intent="danger">🌲 Danger</Button>
+          <Button appearance="outlined" intent="success">🌲 Success</Button>
         </p>,
-        <p>
-          <Button type="submit" key="0" disabled>
-            🌲
-            Default
-            🌲
-          </Button>
-          <Button type="reset" intent="primary" key="1" disabled>
-            🌲
-            Primary
-            🌲
-          </Button>
-          <Button intent="warning" key="2" disabled>
-            🌲
-            Warning
-            🌲
-          </Button>
-          <Button intent="danger" key="3" disabled>
-            🌲
-            Danger
-            🌲
-          </Button>
-          <Button intent="success" key="4" disabled>
-            🌲
-            Success
-          </Button>
+        <p key="3">
+          <Button type="submit" disabled>🌲 Default 🌲</Button>
+          <Button type="reset" intent="primary" disabled>🌲 Primary 🌲</Button>
+          <Button intent="warning" disabled>🌲 Warning 🌲</Button>
+          <Button intent="danger" disabled>🌲 Danger 🌲</Button>
+          <Button intent="success" disabled>🌲 Success </Button>
         </p>,
-        <p>
+        <p key="4">
           <Button fit>Fit container</Button>
         </p>,
-        <p>
+        <p key="5">
           <Button fit intent="primary">Fit container2</Button>
         </p>,
-        <p>
+        <p key="6">
           <Button shape="circle"><i className="fa fa-plus"/></Button>
           <Button intent="danger" shape="circle"><i className="fa fa-trash"/></Button>
           <Button intent="primary" shape="extended">Extended button</Button>
           <Button intent="warning" shape="rect">Rectangle button</Button>
         </p>,
-        <p>
-          <Button intent="danger" type="submit" key="0" size="sm">
-            🌲
-            Small
-            🌲
-          </Button>
-          <Button intent="danger" type="reset" key="1">
-            🌲
-            Default
-            🌲
-          </Button>
-          <Button intent="danger" key="2" size="lg">
-            🌲
-            Big
-            🌲
-          </Button>
-        </p>
+        <p key="7">
+          <Button intent="danger" shape="extended" type="submit" size="sm">🌲 Small 🌲</Button>
+          <Button intent="danger" shape="extended" type="reset">🌲 Default 🌲</Button>
+          <Button intent="danger" shape="extended" size="lg">🌲 Big 🌲</Button>
+          <Button intent="success" shape="rect" type="submit" size="sm">🌲 Small 🌲</Button>
+          <Button intent="success" shape="rect" type="reset">🌲 Default 🌲</Button>
+          <Button intent="success" shape="rect" size="lg">🌲 Big 🌲</Button>
+        </p>,
+        <p className="active-example" key="8">
+          <Button type="submit">Default</Button>
+          <Button active type="submit">Active</Button>
+
+          <Button type="reset" intent="primary">Primary</Button>
+          <Button active type="reset" intent="primary">🌲Active</Button>
+          
+          <Button intent="warning">Warning</Button>
+          <Button active intent="warning">🌲Active</Button>
+          
+          <Button intent="danger">Danger</Button>
+          <Button active intent="danger">🌲Active</Button>
+          
+          <Button intent="success">Success</Button>
+          <Button active intent="success">🌲Active</Button>
+        </p>,
+        <ButtonGroup key="9">
+          <Button active type="submit">Default</Button>
+          <Button type="submit">Default</Button>
+          <Button type="submit">Default</Button>
+        </ButtonGroup>,
+        <ButtonGroup key="10">
+          <Button intent="success" type="submit">Success</Button>
+          <Button type="submit">Default</Button>
+          <Button intent="danger" type="submit">Danger</Button>
+        </ButtonGroup>,
+        <ButtonGroup key="11" fit>
+          <Button intent="primary">Item 1</Button>
+          <Button active intent="primary">Item 2</Button>
+          <Button intent="primary">Item 3</Button>
+          <Button intent="primary">Item 4</Button>
+        </ButtonGroup>,
+        <ButtonGroup key="12" fit>
+          <Button intent="warning">Item 1</Button>
+          <Button active intent="warning">Item 2</Button>
+          <Button intent="warning">Item 3</Button>
+          <Button intent="warning">Item 4</Button>
+        </ButtonGroup>
       ]
     )
   }

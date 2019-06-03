@@ -5,10 +5,31 @@
 $btn-border-width: 0;
 $btn-shadow-spread: 0.2em; 
 
-$btn-default-color: #55677d;
-$btn-default-background-color: $secondary-color;
-$btn-default-background-color-hover: darken($btn-default-background-color, 5%);
 
+$btn-default-color: $base-text-color;
+$btn-default-background-color: $base-color;
+$btn-default-background-color-hover: darken($btn-default-background-color, 5.4);
+$btn-default-background-color-active: darken($btn-default-background-color, 8.5);
+
+$btn-primary-color: #fff;
+$btn-primary-background-color: $primary-color;
+$btn-primary-background-color-hover: darken($btn-primary-background-color, 5.4);
+$btn-primary-background-color-active: darken($btn-primary-background-color, 8.5);
+
+$btn-warning-color: #fff;
+$btn-warning-background-color: $warning-color;
+$btn-warning-background-color-hover: darken($btn-warning-background-color, 3.4);
+$btn-warning-background-color-active: darken($btn-warning-background-color, 6.5);
+
+$btn-danger-color: #fff;
+$btn-danger-background-color: $danger-color;
+$btn-danger-background-color-hover: darken($btn-danger-background-color, 5.4);
+$btn-danger-background-color-active: darken($btn-danger-background-color, 8.5);
+
+$btn-success-color: #fff;
+$btn-success-background-color: $success-color;
+$btn-success-background-color-hover: darken($btn-success-background-color, 5.4);
+$btn-success-background-color-active: darken($btn-success-background-color, 8.5);
 
 $btn-default: (
   "color": #55677d,

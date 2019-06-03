@@ -9,3 +9,14 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin add-base-border() {
+  border-radius: $border-radius;
+  border: $border-width solid $border-color;
+}
+
+@mixin add-base-height() {
+  height: $line-height;
+  line-height: $line-height;
+  box-sizing: border-box;
+}
