@@ -2,9 +2,9 @@ import React, { InputHTMLAttributes } from 'react'
 import { cn } from '../../common/classNames'
 
 export interface BaseInputProps {
-  intent?: 'primary' | 'warning' | 'success' | 'danger'
+  intent?: 'primary' | 'warning' | 'success' | 'danger' | string
   fit?: boolean
-  shape?: 'extended' | 'rect',
+  shape?: 'extended' | 'rect' | string,
   size?: 'sm' | 'lg',
   width?: number | string
 }

@@ -9,7 +9,7 @@ export interface BaseButtonGroupProps {
 
 export type ButtonGroupProps = Partial<HTMLAttributes<any> & BaseButtonGroupProps>
 
-export default React.memo(function ButtonGroup(props: ButtonGroupProps) {
+export default React.memo(function InputButton(props: ButtonGroupProps) {
   const {
     className,
     children,
@@ -19,9 +19,9 @@ export default React.memo(function ButtonGroup(props: ButtonGroupProps) {
   } = props
 
   const classNames = cn(
-    'btn-group',
-    size && `btn-${size}`,
-    fit && `btn-group-fit`,
+    'input-group',
+    size && `input-${size}`,
+    fit && `input-group-fit`,
     className,
   )
 

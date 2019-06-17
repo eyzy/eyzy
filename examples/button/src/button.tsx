@@ -2,7 +2,6 @@ import React from 'react'
 import Button from '../../../src/components/button'
 import ButtonGroup from '../../../src/components/button/group'
 
-
 export default class Component extends React.Component {
   render() {
     return (
@@ -92,7 +91,17 @@ export default class Component extends React.Component {
           <Button active intent="warning">Item 2</Button>
           <Button intent="warning">Item 3</Button>
           <Button intent="warning">Item 4</Button>
-        </ButtonGroup>
+        </ButtonGroup>,
+        <p key="13">
+          <Button appearance="bordered" type="submit">Default</Button>
+          <Button appearance="bordered" type="reset" intent="primary">🌲 Primary</Button>
+          <Button appearance="bordered" intent="warning">🌲 Warning</Button>
+          <Button appearance="bordered" intent="danger">🌲 Danger</Button>
+          <Button appearance="bordered" intent="success">🌲 Success</Button>
+          <Button appearance="bordered" intent="danger" shape="extended" type="submit" size="sm">🌲 Small 🌲</Button>
+          <Button appearance="bordered" intent="danger" shape="extended" type="reset">🌲 Default 🌲</Button>
+          <Button appearance="bordered" intent="danger" shape="extended" size="lg">🌲 Big 🌲</Button>
+        </p>,
       ]
     )
   }

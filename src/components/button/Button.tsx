@@ -3,7 +3,7 @@ import { cn } from '../../common/classNames'
 
 
 export interface BaseButtonProps {
-  appearance?: 'minimal' | 'outlined',
+  appearance?: 'minimal' | 'outlined' | string,
   intent?: 'primary' | 'warning' | 'success' | 'danger',
   active?: boolean,
   shape?: 'circle' | 'extended' | 'rect',

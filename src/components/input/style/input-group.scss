@@ -1,0 +1,37 @@
+@import "../../../common/style/variables.scss";
+@import "../../../common/style/mixins.scss";
+
+.input-group {
+  @include flex-inline();
+
+  &-fit {
+    display: flex;
+
+    .btn {
+      flex: 1 1 auto;
+
+      &:not(:last-child) {
+        border-right: 1px solid #fff;
+      }
+    }
+  }
+
+  .input, .btn {
+    margin: 0;
+    border-radius: 0;
+
+    border-right-width: 0;
+
+    &:first-child {
+      border-left-width: 1px;
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+
+    &:last-child {
+      border-right-width: 1px;
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+    }
+  }
+}

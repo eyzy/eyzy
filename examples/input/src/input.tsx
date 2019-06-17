@@ -1,5 +1,6 @@
 import React from 'react'
 import Input from '../../../src/components/Input'
+import InputGroup from '../../../src/components/Input/group'
 import Button from '../../../src/components/Button'
 
 
@@ -41,6 +42,25 @@ export default class Component extends React.Component {
         </p>,
         <p>
           <Input/><Button>Atata</Button>
+        </p>,
+        <p>
+          <InputGroup>
+            <Input/><Button>Atata</Button>
+          </InputGroup>
+        </p>,
+        <p>
+          <InputGroup>
+            <Input shape="extended" size="sm" />
+            <Input shape="extended" />
+            <Button>AAAAAA</Button>
+            <Input shape="extended" size="lg" />
+          </InputGroup>
+        </p>,
+        <p>
+          <InputGroup>
+            <Input shape="extended" size="sm" intent="danger" />
+            <Button appearance="danger">AAAAAA</Button>
+          </InputGroup>
         </p>
       ]
     )
