@@ -1,0 +1,29 @@
+@import "../../../common/style/variables.scss";
+@import "../../../common/style/mixins.scss";
+
+.tabs {
+  &-header {
+    display: flex;
+    border-bottom: 1px solid #eee;
+
+    &__item {
+      cursor: pointer;
+      padding: 10px;
+      opacity: 0.7;
+      position: relative;
+      border-bottom: 2px solid transparent;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &.active {
+        border-bottom-color: $primary-color;
+      }
+    }
+  }
+
+  &-item {
+    padding: 15px 10px;
+  }
+}

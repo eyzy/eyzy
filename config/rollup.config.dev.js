@@ -51,5 +51,6 @@ export default [
   //   }
   // },
   configFor('button'),
-  configFor('input')
+  configFor('input'),
+  configFor('tabs')
 ]
