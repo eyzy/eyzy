@@ -2,6 +2,9 @@
 @import "../../../common/style/mixins.scss";
 
 .tabs {
+  display: flex;
+  flex-direction: column;
+
   &-header {
     display: flex;
     border-bottom: 1px solid #eee;
@@ -24,6 +27,7 @@
   }
 
   &-content {
+    flex-grow: 1;
     padding: 15px 10px;
   }
 }

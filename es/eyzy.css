@@ -216,19 +216,22 @@
 /*
 Как в твитере, фокус светлее, чем активное (бордер или шадоу)
 */
-.tabs-header {
+.tabs {
   display: flex;
-  border-bottom: 1px solid #eee; }
-  .tabs-header__item {
-    cursor: pointer;
-    padding: 10px;
-    opacity: 0.7;
-    position: relative;
-    border-bottom: 2px solid transparent; }
-    .tabs-header__item:hover {
-      opacity: 1; }
-    .tabs-header__item.active {
-      border-bottom-color: #2100FF; }
-
-.tabs-content {
-  padding: 15px 10px; }
+  flex-direction: column; }
+  .tabs-header {
+    display: flex;
+    border-bottom: 1px solid #eee; }
+    .tabs-header__item {
+      cursor: pointer;
+      padding: 10px;
+      opacity: 0.7;
+      position: relative;
+      border-bottom: 2px solid transparent; }
+      .tabs-header__item:hover {
+        opacity: 1; }
+      .tabs-header__item.active {
+        border-bottom-color: #2100FF; }
+  .tabs-content {
+    flex-grow: 1;
+    padding: 15px 10px; }
