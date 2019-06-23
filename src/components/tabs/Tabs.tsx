@@ -16,6 +16,8 @@ const isTab = (component: any): boolean => {
 }
 
 export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
+  static Tab = Tab
+
   constructor(props: TabsProps) {
     super(props)
 
@@ -41,7 +43,7 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
     let activeContent: React.ReactElement<TabProps> | null = null
 
     React.Children.forEach(children, (child: React.ReactElement<TabProps>, i: number) => {
-      if (child.key === activeKey || i == activeKey) {
+      if (child.key === activeKey || i === activeKey) {
         activeContent = child
       }
     })
@@ -94,67 +96,10 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
         <div className="tabs-header">
           { this.renderHeader() }
         </div>
-        <div className="tabs-item">
+        <div className="tabs-content">
           { this.getActiveContent() }
         </div>
       </div>
     )
   }
 }
-/*
-export default React.memo(function Tabs(props: TabsProps) {
-  const [activeTabKey, setActiveTabKey] = useState(props.activeKey || 0)
-
-  let activeTabContent: any
-  const headers: HeaderState[] = React.Children.map(props.children, (child: React.ReactElement<TabProps>, i: number) => {
-    const childKey: ReactText = child.key || i
-
-    if (activeTabKey === childKey) {
-      activeTabContent = child
-    }
-
-    return {
-      key: childKey,
-      label: child.props.label
-    }
-  })
-
-  if (!activeTabContent) {
-    activeTabContent = props.children[0]
-    setActiveTabKey(props.children[0].key || 0)
-  }
-
-  const handleClick = (activeKey: ReactText) => {
-    if (props.onChange) {
-      props.onChange(activeKey + '')
-    }
-
-    setActiveTabKey(activeKey)
-  }
-
-  return (
-    <div className="tabs">
-      <div className="tabs-header">
-        { headers.map((header: HeaderState) => {
-          const className = [
-            'tabs-header__item',
-            header.key === activeTabKey ? 'active' : ''
-          ].filter(Boolean)
-
-          return (
-            <span 
-              className={className.join(' ')} 
-              key={header.key} 
-              onClick={() => handleClick(header.key)}>
-                { header.label }
-            </span>
-          )
-        }) }
-      </div>
-      <div className="tabs-item">
-        { activeTabContent }
-      </div>
-    </div>
-  )
-})
-*/

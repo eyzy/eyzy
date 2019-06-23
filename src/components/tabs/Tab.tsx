@@ -1,12 +1,17 @@
-import React from 'react'
+import React, {ReactNode} from 'react'
 
 export interface TabProps {
   label: string
   disabled?: boolean
+  tab?: ReactNode
 }
 
-export default React.memo(function Tab(props: TabProps) {
+const Tab: React.FC<TabProps> = (props) => {
   return (
-    props['children']
+    <div className="tabs-content__item">
+      { props.children || props.tab }
+    </div>
   )
-})
+}
+
+export default React.memo<React.FC<TabProps>>(Tab)
