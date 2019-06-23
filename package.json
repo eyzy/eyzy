@@ -5,9 +5,11 @@
   "description": "React UI Toolkit",
   "homepage": "https://github.com/eyzy/eyzy#readme",
   "main": "index.ts",
+  "module": "es/eyzy.js",
   "library": "Eyzy",
   "scripts": {
     "start": "cross-env NODE_ENV=development rollup -cw --config ./config/rollup.config.dev.js",
+    "build": "cross-env NODE_ENV=production rollup -c ./config/rollup.config.js",
     "test": "npm test"
   },
   "repository": {

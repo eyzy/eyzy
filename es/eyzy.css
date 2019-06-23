@@ -1,0 +1,234 @@
+@charset "UTF-8";
+/*
+Как в твитере, фокус светлее, чем активное (бордер или шадоу)
+*/
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 0 solid transparent;
+  height: 2.28571em;
+  line-height: 2.28571em;
+  box-sizing: border-box;
+  color: #333;
+  background-color: #efefef;
+  cursor: pointer;
+  outline: none;
+  padding: 0px 10px;
+  font-weight: 500;
+  transition: all 0.1s ease-out 0s; }
+  .btn:hover {
+    background-color: #e1e1e1; }
+  .btn:active {
+    background-color: #d9d9d9; }
+  .btn[disabled] {
+    opacity: 0.4;
+    cursor: default; }
+    .btn[disabled]:hover {
+      background-color: #e1e1e1; }
+  .btn.btn-primary {
+    color: #fff;
+    background-color: #2100FF; }
+    .btn.btn-primary:hover, .btn.btn-primary[disabled] {
+      background-color: #1d00e3; }
+    .btn.btn-primary:active {
+      background-color: #1b00d4; }
+  .btn.btn-warning {
+    color: #fff;
+    background-color: #FF9505; }
+    .btn.btn-warning:hover, .btn.btn-warning[disabled] {
+      background-color: #f38c00; }
+    .btn.btn-warning:active {
+      background-color: #e38300; }
+  .btn.btn-danger {
+    color: #fff;
+    background-color: #F20F22; }
+    .btn.btn-danger:hover, .btn.btn-danger[disabled] {
+      background-color: #da0c1d; }
+    .btn.btn-danger:active {
+      background-color: #cb0b1b; }
+  .btn.btn-success {
+    color: #fff;
+    background-color: #2ECC40; }
+    .btn.btn-success:hover, .btn.btn-success[disabled] {
+      background-color: #29b639; }
+    .btn.btn-success:active {
+      background-color: #26a935; }
+  .btn.btn-outlined {
+    background: none;
+    border: 1px solid #efefef; }
+    .btn.btn-outlined:hover {
+      border-color: #e1e1e1;
+      background-color: #e1e1e1; }
+    .btn.btn-outlined:active {
+      border-color: #d9d9d9;
+      background-color: #d9d9d9; }
+    .btn.btn-outlined.btn-primary {
+      border: 1px solid #2100FF;
+      color: #2100FF; }
+      .btn.btn-outlined.btn-primary:hover {
+        color: #fff;
+        border-color: #1d00e3;
+        background-color: #1d00e3; }
+      .btn.btn-outlined.btn-primary:active {
+        border-color: #1b00d4;
+        background-color: #1b00d4; }
+    .btn.btn-outlined.btn-warning {
+      border: 1px solid #FF9505;
+      color: #FF9505; }
+      .btn.btn-outlined.btn-warning:hover {
+        color: #fff;
+        border-color: #f38c00;
+        background-color: #f38c00; }
+      .btn.btn-outlined.btn-warning:active {
+        border-color: #e38300;
+        background-color: #e38300; }
+    .btn.btn-outlined.btn-danger {
+      border: 1px solid #F20F22;
+      color: #F20F22; }
+      .btn.btn-outlined.btn-danger:hover {
+        color: #fff;
+        border-color: #da0c1d;
+        background-color: #da0c1d; }
+      .btn.btn-outlined.btn-danger:active {
+        border-color: #cb0b1b;
+        background-color: #cb0b1b; }
+    .btn.btn-outlined.btn-success {
+      border: 1px solid #2ECC40;
+      color: #2ECC40; }
+      .btn.btn-outlined.btn-success:hover {
+        color: #fff;
+        border-color: #29b639;
+        background-color: #29b639; }
+      .btn.btn-outlined.btn-success:active {
+        border-color: #26a935;
+        background-color: #26a935; }
+  .btn.btn-minimal {
+    background: none; }
+    .btn.btn-minimal:hover {
+      background: #efefef; }
+    .btn.btn-minimal:active {
+      background-color: #d9d9d9; }
+    .btn.btn-minimal.btn-warning:hover, .btn.btn-minimal.btn-primary:hover, .btn.btn-minimal.btn-danger:hover, .btn.btn-minimal.btn-success:hover {
+      background: #efefef; }
+    .btn.btn-minimal.btn-warning:active, .btn.btn-minimal.btn-primary:active, .btn.btn-minimal.btn-danger:active, .btn.btn-minimal.btn-success:active {
+      background-color: #d9d9d9; }
+    .btn.btn-minimal.btn-warning {
+      color: #f38c00; }
+    .btn.btn-minimal.btn-primary {
+      color: #1d00e3; }
+    .btn.btn-minimal.btn-danger {
+      color: #da0c1d; }
+    .btn.btn-minimal.btn-success {
+      color: #29b639; }
+  .btn.btn-active {
+    background-color: #d9d9d9; }
+    .btn.btn-active.btn-primary {
+      background-color: #1b00d4; }
+    .btn.btn-active.btn-warning {
+      background-color: #e38300; }
+    .btn.btn-active.btn-danger {
+      background-color: #cb0b1b; }
+    .btn.btn-active.btn-success {
+      background-color: #26a935; }
+  .btn-sm {
+    height: 1.6em;
+    line-height: 1.6em; }
+  .btn-lg {
+    height: 2.97142em;
+    line-height: 2.97142em; }
+  .btn-extended {
+    border-radius: 20px;
+    padding: 0 16px; }
+  .btn-circle {
+    border-radius: 50%;
+    width: 2.28571em;
+    height: 2.28571em; }
+  .btn-rect {
+    border-radius: 0; }
+  .btn-fit {
+    display: flex;
+    width: 100%; }
+
+/*
+Как в твитере, фокус светлее, чем активное (бордер или шадоу)
+*/
+.input {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 0 solid transparent;
+  height: 2.28571em;
+  line-height: 2.28571em;
+  box-sizing: border-box;
+  color: #333;
+  background-color: #fff;
+  padding: 0 10px;
+  outline: none;
+  border: 1px solid #efefef;
+  box-sizing: border-box;
+  transition: all 0.1s ease-out 0s; }
+  .input[disabled] {
+    background: #efefef; }
+  .input:focus {
+    border-color: #d9d9d9;
+    box-shadow: none; }
+  .input:hover {
+    border-color: #e1e1e1; }
+  .input-primary {
+    border-color: #2100FF; }
+    .input-primary:focus {
+      border-color: #1700b3; }
+    .input-primary:hover {
+      border-color: #1a00cc; }
+  .input-danger {
+    border-color: #F20F22; }
+    .input-danger:focus {
+      border-color: #ab0917; }
+    .input-danger:hover {
+      border-color: #c30b1a; }
+  .input-warning {
+    border-color: #FF9505; }
+    .input-warning:focus {
+      border-color: #b86a00; }
+    .input-warning:hover {
+      border-color: #d17800; }
+  .input-success {
+    border-color: #2ECC40; }
+    .input-success:focus {
+      border-color: #208e2c; }
+    .input-success:hover {
+      border-color: #25a233; }
+  .input-sm {
+    line-height: 1.6em; }
+  .input-lg {
+    line-height: 2.97142em; }
+  .input-fit {
+    display: block;
+    width: 100%; }
+  .input-extended {
+    border-radius: 20px; }
+  .input-rect {
+    border-radius: 0; }
+
+/*
+Как в твитере, фокус светлее, чем активное (бордер или шадоу)
+*/
+.tabs-header {
+  display: flex;
+  border-bottom: 1px solid #eee; }
+  .tabs-header__item {
+    cursor: pointer;
+    padding: 10px;
+    opacity: 0.7;
+    position: relative;
+    border-bottom: 2px solid transparent; }
+    .tabs-header__item:hover {
+      opacity: 1; }
+    .tabs-header__item.active {
+      border-bottom-color: #2100FF; }
+
+.tabs-content {
+  padding: 15px 10px; }
