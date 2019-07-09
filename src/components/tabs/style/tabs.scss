@@ -29,5 +29,9 @@
   &-content {
     flex-grow: 1;
     padding: 15px 10px;
+
+    &__item {
+      height: 100%;
+    }
   }
 }

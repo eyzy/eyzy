@@ -235,3 +235,5 @@
   .tabs-content {
     flex-grow: 1;
     padding: 15px 10px; }
+    .tabs-content__item {
+      height: 100%; }
