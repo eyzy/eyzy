@@ -15,6 +15,7 @@ export default class App extends React.Component {
               <li><NavLink to="/button">Button</NavLink></li>
               <li><NavLink to="/input">Input</NavLink></li>
               <li><NavLink to="/tabs">Tabs</NavLink></li>
+              <li><NavLink to="/checkbox">Checkbox</NavLink></li>
             </ul>
 
             <div className="app-container">

@@ -85,26 +85,20 @@ function cn() {
     }
     return result.join(' ');
 }
-//# sourceMappingURL=classNames.js.map
 
 var Button = React.memo(function Button(props) {
     var appearance = props.appearance, className = props.className, children = props.children, intent = props.intent, active = props.active, shape = props.shape, type = props.type, size = props.size, fit = props.fit, rest = __rest(props, ["appearance", "className", "children", "intent", "active", "shape", "type", "size", "fit"]);
     var classNames = cn('btn', appearance && "btn-" + appearance, intent && "btn-" + intent, active && "btn-active", shape && "btn-" + shape, size && "btn-" + size, fit && 'btn-fit', className);
     return (React.createElement("button", __assign({ className: classNames }, rest), children));
 });
-//# sourceMappingURL=Button.js.map
 
 var Group = React.memo(function ButtonGroup(props) {
     var className = props.className, children = props.children, size = props.size, fit = props.fit, rest = __rest(props, ["className", "children", "size", "fit"]);
     var classNames = cn('btn-group', size && "btn-" + size, fit && "btn-group-fit", className);
     return (React.createElement("div", __assign({ className: classNames }, rest), children));
 });
-//# sourceMappingURL=Group.js.map
-
-//# sourceMappingURL=index.js.map
 
 Button["Group"] = Group;
-//# sourceMappingURL=index.js.map
 
 function parseWidth(width) {
     var parsed = parseInt(width, 10);
@@ -125,7 +119,6 @@ var Input = React.memo(function Input(props) {
         };
     return (React.createElement("input", __assign({ className: classNames, type: type || "text", style: style }, rest)));
 });
-//# sourceMappingURL=Input.js.map
 
 var Group$1 = React.memo(function InputButton(props) {
     var className = props.className, children = props.children, size = props.size, fit = props.fit, rest = __rest(props, ["className", "children", "size", "fit"]);
@@ -139,7 +132,6 @@ var Tab = function (props) {
     return (React.createElement("div", { className: "tabs-content__item" }, props.children || props.tab));
 };
 var Tab$1 = React.memo(Tab);
-//# sourceMappingURL=Tab.js.map
 
 var isTab = function (component) {
     return component && component.type === Tab$1;
@@ -208,12 +200,8 @@ var Tabs = /** @class */ (function (_super) {
     Tabs.Tab = Tab$1;
     return Tabs;
 }(React.PureComponent));
-//# sourceMappingURL=Tabs.js.map
 
 Tabs.Tab = Tab$1;
-//# sourceMappingURL=index.js.map
-
-//# sourceMappingURL=index.js.map
 
 export { Button, Input, Tabs };
 //# sourceMappingURL=eyzy.js.map
