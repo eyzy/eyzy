@@ -52,10 +52,8 @@ function __rest(s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+            t[p[i]] = s[p[i]];
     return t;
 }
 
@@ -106,6 +104,7 @@ var Group = React.memo(function ButtonGroup(props) {
 //# sourceMappingURL=index.js.map
 
 Button["Group"] = Group;
+//# sourceMappingURL=index.js.map
 
 function parseWidth(width) {
     var parsed = parseInt(width, 10);
@@ -128,7 +127,13 @@ var Input = React.memo(function Input(props) {
 });
 //# sourceMappingURL=Input.js.map
 
-//# sourceMappingURL=index.js.map
+var Group$1 = React.memo(function InputButton(props) {
+    var className = props.className, children = props.children, size = props.size, fit = props.fit, rest = __rest(props, ["className", "children", "size", "fit"]);
+    var classNames = cn('input-group', size && "input-" + size, fit && "input-group-fit", className);
+    return (React.createElement("div", __assign({ className: classNames }, rest), children));
+});
+
+Input["Group"] = Group$1;
 
 var Tab = function (props) {
     return (React.createElement("div", { className: "tabs-content__item" }, props.children || props.tab));
@@ -206,6 +211,8 @@ var Tabs = /** @class */ (function (_super) {
 //# sourceMappingURL=Tabs.js.map
 
 Tabs.Tab = Tab$1;
+//# sourceMappingURL=index.js.map
+
 //# sourceMappingURL=index.js.map
 
 export { Button, Input, Tabs };

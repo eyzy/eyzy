@@ -3,8 +3,8 @@ import 'eyzy/style.css'
 import { BrowserRouter as Router, Redirect, Route, NavLink } from "react-router-dom"
 
 import Button from './components/Button'
-// import Input from './components/Input'
-// import Tabs from './components/Tabs'
+import Input from './components/Input'
+import Tabs from './components/Tabs'
 
 export default class App extends React.Component {
   render() {
@@ -20,8 +20,8 @@ export default class App extends React.Component {
             <div className="app-container">
               <Redirect from="/" to="/button" />
               <Route exact path="/button" component={Button} />
-              {/* <Route exact path="/input" component={Input} />
-              <Route exact path="/tabs" component={Tabs} /> */}
+              <Route exact path="/input" component={Input} />
+              <Route exact path="/tabs" component={Tabs} />
             </div>
           </Router>
       </div>

@@ -1,10 +1,10 @@
 import React from 'react'
-import Input from '../../../src/components/Input'
-import InputGroup from '../../../src/components/Input/group'
-import Button from '../../../src/components/Button'
+import { Button, Input } from 'eyzy'
 
+const InputGroup = Input.Group
 
-export default class Component extends React.Component {
+/* eslint-disable */
+export default class InputExamples extends React.Component {
   render() {
     return (
       [

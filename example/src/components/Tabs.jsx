@@ -1,11 +1,9 @@
 import React from 'react'
-import Tabs, { Tab } from '../../../src/components/Tabs'
+import { Tabs } from 'eyzy'
 
-interface Props {
-  name: string
-}
+const Tab = Tabs.Tab
 
-class TabContent extends React.Component<Props> {
+class TabContent extends React.Component {
   componentDidMount() {
     console.log('Mounted: ' + this.props.name)
   }
@@ -25,16 +23,12 @@ class TabContent extends React.Component<Props> {
   }
 }
 
-interface State {
-  activeTabKey: string
-}
-
-export default class Component extends React.Component<null, State> {
+export default class Component extends React.Component {
   state = {
     activeTabKey: 'tab22'
   }
 
-  handleTabChange = (key: string) => {
+  handleTabChange = (key) => {
     if (key !== 'tab22') {
       this.setState({ activeTabKey: key })
     } 
