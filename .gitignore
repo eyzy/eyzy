@@ -11,7 +11,7 @@ examples/**/build
 package-lock.json
 
 # dependencies
-/node_modules
+node_modules
 
 # production
 /build

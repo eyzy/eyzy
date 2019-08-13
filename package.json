@@ -4,12 +4,12 @@
   "author": "Kostiantyn",
   "description": "React UI Toolkit",
   "homepage": "https://github.com/eyzy/eyzy#readme",
-  "main": "index.ts",
+  "main": "dist/eyzy.js",
   "module": "es/eyzy.js",
   "library": "Eyzy",
   "scripts": {
-    "start": "cross-env NODE_ENV=development rollup -cw --config ./config/rollup.config.dev.js",
-    "build": "cross-env NODE_ENV=production rollup -c ./config/rollup.config.js",
+    "start": "cross-env NODE_ENV=development rollup -cw rollup.config.js",
+    "build": "cross-env NODE_ENV=production rollup -c rollup.config.js",
     "test": "npm test"
   },
   "repository": {
@@ -30,13 +30,20 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
     "@types/react": "^16.8.18",
     "@types/react-dom": "^16.8.4",
+    "core-js": "^3.2.0",
     "cross-env": "^5.2.0",
     "rollup": "^1.12.3",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-scss": "^1.0.1",
     "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-typescript": "^1.0.1",
+    "rollup-plugin-url": "^2.2.2",
     "tslib": "^1.9.3",
     "tslint": "^5.16.0",
     "tslint-react": "^4.0.0",

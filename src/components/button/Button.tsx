@@ -1,7 +1,6 @@
 import React, { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react'
 import { cn } from '../../common/classNames'
 
-
 export interface BaseButtonProps {
   appearance?: 'minimal' | 'outlined' | string,
   intent?: 'primary' | 'warning' | 'success' | 'danger',
