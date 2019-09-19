@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Redirect, Route, NavLink } from "react-router-
 import Button from './components/Button'
 import Input from './components/Input'
 import Tabs from './components/Tabs'
+import Checkbox from './components/Checkbox'
 
 export default class App extends React.Component {
   render() {
@@ -23,6 +24,7 @@ export default class App extends React.Component {
               <Route exact path="/button" component={Button} />
               <Route exact path="/input" component={Input} />
               <Route exact path="/tabs" component={Tabs} />
+              <Route exact path="/checkbox" component={Checkbox} />
             </div>
           </Router>
       </div>
