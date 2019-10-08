@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Redirect, Route, NavLink } from "react-router-
 
 import Button from './components/Button'
 import Input from './components/Input'
-import Tabs from './components/Tabs'
+import Tabs from './components/ExampleTabs'
 import Checkbox from './components/Checkbox'
 
 export default class App extends React.Component {
@@ -20,7 +20,6 @@ export default class App extends React.Component {
             </ul>
 
             <div className="app-container">
-              <Redirect from="/" to="/button" />
               <Route exact path="/button" component={Button} />
               <Route exact path="/input" component={Input} />
               <Route exact path="/tabs" component={Tabs} />

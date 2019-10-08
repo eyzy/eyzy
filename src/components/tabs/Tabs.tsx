@@ -1,14 +1,18 @@
-import React, { ReactText } from 'react'
+import React, { ReactText, HTMLAttributes } from 'react'
 import Tab, { TabProps } from './Tab'
+import { cn } from '../../common/classNames'
 
-export interface TabsProps {
+export interface BaseTabsProps {
   children: React.ReactElement<TabProps>[]
   activeKey?: ReactText
   onChange?: (activeKey: ReactText) => void
+  defaultActiveKey?: ReactText
 }
 
+type TabsProps = Partial<HTMLAttributes<HTMLDivElement> & BaseTabsProps>
+
 interface TabsState {
-  activeKey?: ReactText
+  activeKey?: ReactText | null
 }
 
 const isTab = (component: any): boolean => {
@@ -21,9 +25,16 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
   constructor(props: TabsProps) {
     super(props)
 
-    this.state = {
-      activeKey: props.activeKey || props.children[0].key || 0
+    const state = {
+      activeKey: props.defaultActiveKey || props.activeKey || null
     }
+
+    if (!state.activeKey && !props.activeKey) {
+      const children = this.getChildNodes(props.children)
+      state.activeKey = (children[0] && children[0].key) || 0
+    }
+
+    this.state = state
   }
 
   static getDerivedStateFromProps(props: TabsProps) {
@@ -36,23 +47,26 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
     return null
   }
 
+  getChildNodes = (children = this.props.children): React.ReactElement<TabProps>[] => {
+    const childNodes: React.ReactElement<TabProps>[] = []
+
+    React.Children.forEach(children, (item: React.ReactElement<TabProps>) => {
+      childNodes.push(item)
+    })
+
+    return childNodes
+  }
+
   getActiveContent = (): React.ReactElement<TabProps> | null => {
     const children = this.props.children
     const activeKey = this.state.activeKey
 
-    let activeContent: React.ReactElement<TabProps> | null = null
+    const activeContent: React.ReactElement<TabProps> | undefined = this.getChildNodes()
+      .find((child, i: number) => {
+        return child.key === activeKey || i === activeKey
+      })
 
-    React.Children.forEach(children, (child: React.ReactElement<TabProps>, i: number) => {
-      if (child.key === activeKey || i === activeKey) {
-        activeContent = child
-      }
-    })
-
-    if (!activeContent) {
-      return children[0]
-    }
-
-    return activeContent
+    return activeContent || (children ? children[0] : null)
   }
 
   handleChange = (key: ReactText) => {
@@ -67,7 +81,7 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
     const headers: React.ReactElement<HTMLDivElement>[] = []
     const activeTabKey: any = this.state.activeKey
 
-    React.Children.forEach(this.props.children, (child: React.ReactElement<TabProps>, i: number) => {
+    this.getChildNodes().forEach((child: React.ReactElement<TabProps>, i: number) => {
       if (!isTab(child)) {
         return
       }
@@ -91,8 +105,10 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
   }
 
   render() {
+    const className = cn('tabs', this.props.className)
+
     return (
-      <div className="tabs">
+      <div className={className}>
         <div className="tabs-header">
           { this.renderHeader() }
         </div>

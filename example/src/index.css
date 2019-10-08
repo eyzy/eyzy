@@ -42,7 +42,9 @@ body {
 }
 
 
-
+.shadow {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5)
+}
 
 
 .btn, .btn-group {
@@ -70,4 +72,8 @@ p.active-example > .btn:nth-child(even) {
 
 .input {
   margin-right: 10px;
+}
+
+.tabs {
+  margin-bottom: 30px;
 }

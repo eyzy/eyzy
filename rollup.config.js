@@ -27,7 +27,8 @@ const config = {
   output: [
     {
       file: pkg.main,
-      format: 'cjs',
+      format: 'umd',
+      name: 'eyzy',
       sourcemap: true,
       banner
     },
