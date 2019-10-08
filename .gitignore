@@ -3,6 +3,7 @@
 dist
 es
 lib
+style.css
 
 *.js.map
 
