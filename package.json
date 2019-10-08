@@ -25,6 +25,12 @@
   "bugs": {
     "url": "https://github.com/eyzy/eyzy/issues"
   },
+  "files": [
+    "src",
+    "dist",
+    "es",
+    "style.css"
+  ],
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
