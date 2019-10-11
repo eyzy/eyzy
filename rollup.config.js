@@ -47,7 +47,6 @@ const config = {
       output: (styles) => {
         fs.writeFileSync(path.resolve('./style.css'), styles)
       },
-      outputStyle: 'compressed'
     }),
     url(),
     babel({

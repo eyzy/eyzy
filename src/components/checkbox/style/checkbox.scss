@@ -2,5 +2,73 @@
 @import "../../../common/style/mixins.scss";
 
 .checkbox {
-  color: red;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+
+  > input {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+
+    &:focus ~ .checkbox-inner {
+      border-color: #38a0ff;
+    }
+  }
+
+  &.checked {
+    .checkbox-inner {
+      background-color: #2490f5;
+      border-color: #2490f5;
+
+      &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        transform: rotate(45deg) scale(1);
+        border: 2px solid #fff;
+        border-top: 0;
+        border-left: 0;
+        transition: opacity .2s;
+        opacity: 1;
+        left: 6.1px;
+        top: 2.2px;
+        width: 4px;
+        height: 10px;
+      }
+    }
+  }
+
+  &--right {
+    flex-direction: row-reverse;
+
+    .checkbox-label {
+      padding-left: 0;
+    }
+  }
+
+  &-inner {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #d0d0d0;
+    border-radius: 2px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+    position: relative;
+    display: inline-block;
+  }
+
+
+  &:hover {
+    .checkbox-inner {
+      border-color: #38a0ff;
+    }
+  }
+
+  &-label {
+    padding: 0 8px;
+  }
 }

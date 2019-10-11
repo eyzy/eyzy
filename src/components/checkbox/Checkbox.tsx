@@ -1,34 +1,80 @@
-import React, { InputHTMLAttributes } from 'react'
+import React, { InputHTMLAttributes, ChangeEvent } from 'react'
 import { cn } from '../../common/classNames'
 
 export interface BaseCheckboxProps {
-  appearance?: 'minimal' | 'outlined' | string,
-  intent?: 'primary' | 'warning' | 'success' | 'danger',
-  active?: boolean,
-  shape?: 'circle' | 'extended' | 'rect',
-  size?: 'sm' | 'lg',
-  fit?: boolean
+  align: 'left' | 'right'
 }
 
 export type CheckboxProps = Partial<InputHTMLAttributes<any> & BaseCheckboxProps>
 
-export default React.memo(function Checkbox(props: CheckboxProps) {
-  const {
-    className,
-    ...rest
-  } = props
+interface State {
+  checked: boolean
+}
 
-  const classNames = cn(
-    'checkbox',
-    className
-  )
+export default class Checkbox extends React.Component<CheckboxProps, State> {
+  constructor(props: CheckboxProps) {
+    super(props)
 
-  return (
-    <span className={classNames} >
-        <input
-          type="checkbox"
-          {...rest}
-        />
-      </span>
-  )
-})
+    const checked: boolean | undefined = 'checked' in props 
+      ? props.checked 
+      : props.defaultChecked
+
+    this.state = {
+      checked: checked || false
+    }
+  }
+
+  static getDerivedStateFromProps(props: CheckboxProps, state: State) {
+    if ('checked' in props) {
+      return {
+        ...state,
+        checked: props.checked,
+      }
+    }
+
+    return null
+  }
+
+  handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (this.props.onChange) {
+      this.props.onChange(e)
+    } else {
+      this.setState({ checked: e.target.checked })
+    }
+  }
+
+  render() {
+    const {
+      className,
+      children,
+      align,
+      defaultChecked,
+      ...rest
+    } = this.props
+  
+    const { checked } = this.state
+
+    const classNames = cn(
+      'checkbox',
+      'right' === align ? 'checkbox--right' : null,
+      checked ? 'checked' : null,
+      className
+    )
+
+    return (
+        <label className={classNames}>
+          <input
+            type="checkbox"
+            onChange={this.handleChange}
+            checked={checked}
+            {...rest}
+          />
+          <span className="checkbox-inner" />
+          {children && (
+            <span className="checkbox-label">{children}</span>
+          )}
+        </label>
+    )
+  }
+
+}

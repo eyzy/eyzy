@@ -2,10 +2,10 @@ import React from 'react'
 import 'eyzy/style.css'
 import { BrowserRouter as Router, Redirect, Route, NavLink } from "react-router-dom"
 
-import Button from './components/Button'
-import Input from './components/Input'
+import Button from './components/ExampleButton'
+import Input from './components/ExampleInput'
 import Tabs from './components/ExampleTabs'
-import Checkbox from './components/Checkbox'
+import Checkbox from './components/ExampleCheckbox'
 
 export default class App extends React.Component {
   render() {
