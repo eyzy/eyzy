@@ -1,0 +1,25 @@
+@import "../../../common/style/variables.scss";
+@import "../../../common/style/mixins.scss";
+
+.tag {
+  @include flex-inline();
+
+  background: $base-color;
+  line-height: 1em;
+  padding: 5px 10px;
+
+  &--rounded {
+    border-radius: $border-radius;
+  }
+
+  &__remove-btn {
+    background: none;
+    border: 0;
+    width: 16px;
+    padding: 0;
+    height: 16px;
+    margin-left: 5px;
+    outline: none;
+    cursor: pointer;
+  }
+}
