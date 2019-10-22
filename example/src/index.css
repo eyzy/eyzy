@@ -48,37 +48,37 @@ body {
 }
 
 
-.btn, .btn-group {
+.eyzy-btn, .eyzy-btn-group {
   margin-right: 10px;
 }
 
-p.active-example > .btn:nth-child(odd) {
+p.active-example > .eyzy-btn:nth-child(odd) {
   margin-right: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-p.active-example > .btn:nth-child(even) {
+p.active-example > .eyzy-btn:nth-child(even) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.btn-group {
+.eyzy-btn-group {
   margin-bottom: 10px;
 }
 
-.btn-bordered:active {
+.eyzy-btn-bordered:active {
   box-shadow: 0 0 0 3px rgba(7, 136, 222, 0.4), inset 0 0 0 1px rgba(67, 90, 111, 0.14), inset 0 -1px 1px 0 rgba(67, 90, 111, 0.3);
 }
 
-.input {
+.eyzy-input {
   margin-right: 10px;
 }
 
-.tabs {
+.eyzy-tabs {
   margin-bottom: 30px;
 }
 
-.tag {
+.eyzy-tag {
   margin-right: 5px;
 }

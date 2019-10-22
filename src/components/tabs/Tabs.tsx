@@ -88,7 +88,7 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
 
       const key: ReactText = child.key || i
       const className = [
-        'tabs-header__item',
+        'eyzy-tabs-header__item',
         key === activeTabKey ? 'active' : ''
       ]
         .filter(Boolean)
@@ -105,14 +105,14 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
   }
 
   render() {
-    const className = cn('tabs', this.props.className)
+    const className = cn('eyzy-tabs', this.props.className)
 
     return (
       <div className={className}>
-        <div className="tabs-header">
+        <div className="eyzy-tabs-header">
           { this.renderHeader() }
         </div>
-        <div className="tabs-content">
+        <div className="eyzy-tabs-content">
           { this.getActiveContent() }
         </div>
       </div>

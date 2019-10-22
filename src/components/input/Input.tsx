@@ -22,8 +22,6 @@ function parseWidth(width: any): string | null {
 }
 
 export default React.memo(function Input(props: InputProps) {
-  console.log('rename size  everywere (!)')
-
   const {
     className,
     intent,
@@ -36,11 +34,11 @@ export default React.memo(function Input(props: InputProps) {
   } = props
 
   const classNames = cn(
-    'input',
-    intent && `input-${intent}`,
-    shape && `input-${shape}`,
-    size && `input-${size}`,
-    fit && 'input-fit',
+    'eyzy-input',
+    intent && `eyzy-input-${intent}`,
+    shape && `eyzy-input-${shape}`,
+    size && `eyzy-input-${size}`,
+    fit && 'eyzy-input-fit',
     className
   )
 

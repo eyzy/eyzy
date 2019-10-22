@@ -27,13 +27,13 @@ export default React.memo(function Button(props: ButtonProps) {
   } = props
 
   const classNames = cn(
-    'btn',
-    appearance && `btn-${appearance}`,
-    intent && `btn-${intent}`,
-    active && `btn-active`,
-    shape && `btn-${shape}`,
-    size && `btn-${size}`,
-    fit && 'btn-fit',
+    'eyzy-btn',
+    appearance && `eyzy-btn-${appearance}`,
+    intent && `eyzy-btn-${intent}`,
+    active && `eyzy-btn-active`,
+    shape && `eyzy-btn-${shape}`,
+    size && `eyzy-btn-${size}`,
+    fit && 'eyzy-btn-fit',
     className
   )
 

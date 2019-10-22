@@ -19,9 +19,9 @@ export default React.memo(function ButtonGroup(props: ButtonGroupProps) {
   } = props
 
   const classNames = cn(
-    'btn-group',
-    size && `btn-${size}`,
-    fit && `btn-group-fit`,
+    'eyzy-btn-group',
+    size && `eyzy-btn-${size}`,
+    fit && `eyzy-btn-group-fit`,
     className,
   )
 

@@ -19,9 +19,9 @@ export default React.memo(function InputButton(props: ButtonGroupProps) {
   } = props
 
   const classNames = cn(
-    'input-group',
-    size && `input-${size}`,
-    fit && `input-group-fit`,
+    'eyzy-input-group',
+    size && `eyzy-input-${size}`,
+    fit && `eyzy-input-group-fit`,
     className,
   )
 

@@ -8,7 +8,7 @@ export interface TabProps {
 
 const Tab: React.FC<TabProps> = (props) => {
   return (
-    <div className="tabs-content__item">
+    <div className="eyzy-tabs-content__item">
       { props.children || props.tab }
     </div>
   )

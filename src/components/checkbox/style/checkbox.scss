@@ -1,7 +1,7 @@
 @import "../../../common/style/variables.scss";
 @import "../../../common/style/mixins.scss";
 
-.checkbox {
+.eyzy-checkbox {
   display: inline-flex;
   align-items: center;
   position: relative;
@@ -14,13 +14,13 @@
     width: 0;
     height: 0;
 
-    &:focus ~ .checkbox-inner {
+    &:focus ~ .eyzy-checkbox-inner {
       border-color: #38a0ff;
     }
   }
 
   &.checked {
-    .checkbox-inner {
+    .eyzy-checkbox-inner {
       background-color: #2490f5;
       border-color: #2490f5;
 
@@ -45,7 +45,7 @@
   &--right {
     flex-direction: row-reverse;
 
-    .checkbox-label {
+    .eyzy-checkbox-label {
       padding-left: 0;
     }
   }

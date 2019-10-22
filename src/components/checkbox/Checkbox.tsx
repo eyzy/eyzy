@@ -55,8 +55,8 @@ export default class Checkbox extends React.Component<CheckboxProps, State> {
     const { checked } = this.state
 
     const classNames = cn(
-      'checkbox',
-      'right' === align ? 'checkbox--right' : null,
+      'eyzy-checkbox',
+      'right' === align ? 'eyzy-checkbox--right' : null,
       checked ? 'checked' : null,
       className
     )
@@ -69,9 +69,9 @@ export default class Checkbox extends React.Component<CheckboxProps, State> {
             checked={checked}
             {...rest}
           />
-          <span className="checkbox-inner" />
+          <span className="eyzy-checkbox-inner" />
           {children && (
-            <span className="checkbox-label">{children}</span>
+            <span className="eyzy-checkbox-label">{children}</span>
           )}
         </label>
     )

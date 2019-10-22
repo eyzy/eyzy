@@ -1,13 +1,13 @@
 @import "../../../common/style/variables.scss";
 @import "../../../common/style/mixins.scss";
 
-.input-group {
+.eyzy-input-group {
   @include flex-inline();
 
   &-fit {
     display: flex;
 
-    .btn {
+    .eyzy-btn {
       flex: 1 1 auto;
 
       &:not(:last-child) {
@@ -16,7 +16,7 @@
     }
   }
 
-  .input, .btn {
+  .eyzy-input, .eyzy-btn {
     margin: 0;
     border-radius: 0;
 

@@ -1,7 +1,7 @@
 @import "../../../common/style/variables.scss";
 @import "../../../common/style/mixins.scss";
 
-.btn {
+.eyzy-btn {
   @include flex-inline();
   @include add-base-border();
   @include add-base-height();
@@ -33,7 +33,7 @@
     }
   }
 
-  &.btn-primary {
+  &.eyzy-btn-primary {
     color: $btn-primary-color;
     background-color: $btn-primary-background-color;
   
@@ -47,7 +47,7 @@
     }
   }
 
-  &.btn-warning {
+  &.eyzy-btn-warning {
     color: $btn-warning-color;
     background-color: $btn-warning-background-color;
   
@@ -61,7 +61,7 @@
     }
   }
   
-  &.btn-danger {
+  &.eyzy-btn-danger {
     color: $btn-danger-color;
     background-color: $btn-danger-background-color;
   
@@ -75,7 +75,7 @@
     }
   }
   
-  &.btn-success {
+  &.eyzy-btn-success {
     color: $btn-success-color;
     background-color: $btn-success-background-color;
   
@@ -89,7 +89,7 @@
     }
   }
 
-  &.btn-outlined {
+  &.eyzy-btn-outlined {
     background: none;
     border: 1px solid $btn-default-background-color;
 
@@ -103,7 +103,7 @@
       background-color: $btn-default-background-color-active;
     }
 
-    &.btn-primary {
+    &.eyzy-btn-primary {
       border: 1px solid $btn-primary-background-color;
       color: $btn-primary-background-color;
   
@@ -119,7 +119,7 @@
       }
     }
 
-    &.btn-warning {
+    &.eyzy-btn-warning {
       border: 1px solid $btn-warning-background-color;
       color: $btn-warning-background-color;
   
@@ -135,7 +135,7 @@
       }
     }
     
-    &.btn-danger {
+    &.eyzy-btn-danger {
       border: 1px solid $btn-danger-background-color;
       color: $btn-danger-background-color;
   
@@ -151,7 +151,7 @@
       }
     }
     
-    &.btn-success {
+    &.eyzy-btn-success {
       border: 1px solid $btn-success-background-color;
       color: $btn-success-background-color;
   
@@ -168,7 +168,7 @@
     }
   }
 
-  &.btn-minimal {
+  &.eyzy-btn-minimal {
     background: none;
 
     &:hover {
@@ -179,10 +179,10 @@
       background-color: $btn-default-background-color-active;
     }
 
-    &.btn-warning,
-    &.btn-primary,
-    &.btn-danger,
-    &.btn-success {
+    &.eyzy-btn-warning,
+    &.eyzy-btn-primary,
+    &.eyzy-btn-danger,
+    &.eyzy-btn-success {
       &:hover {
         background: $base-color;
       }
@@ -192,39 +192,39 @@
       }
     }
 
-    &.btn-warning {
+    &.eyzy-btn-warning {
       color: $btn-warning-background-color-hover;
     }
 
-    &.btn-primary {
+    &.eyzy-btn-primary {
       color: $btn-primary-background-color-hover;
     }
 
-    &.btn-danger {
+    &.eyzy-btn-danger {
       color: $btn-danger-background-color-hover;
     }
 
-    &.btn-success {
+    &.eyzy-btn-success {
       color: $btn-success-background-color-hover;
     }
   }
 
-  &.btn-active {
+  &.eyzy-btn-active {
     background-color: $btn-default-background-color-active;
 
-    &.btn-primary {
+    &.eyzy-btn-primary {
       background-color: $btn-primary-background-color-active;
     }
 
-    &.btn-warning {
+    &.eyzy-btn-warning {
       background-color: $btn-warning-background-color-active;
     }
 
-    &.btn-danger {
+    &.eyzy-btn-danger {
       background-color: $btn-danger-background-color-active;
     }
 
-    &.btn-success {
+    &.eyzy-btn-success {
       background-color: $btn-success-background-color-active;
     }
   }
