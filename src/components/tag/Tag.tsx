@@ -9,12 +9,20 @@ export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
   key?: string
 }
 
+const getStyle = (color: string | undefined, style?: any): any => {
+  return {
+    backgroundColor: color,
+    ...style,
+  }
+}
+
 export default React.memo(function Tag(props: TagProps) {
   const {
     color,
     rounded,
     onRemove,
     children,
+    style,
     ...rest
   } = props
 
@@ -24,7 +32,7 @@ export default React.memo(function Tag(props: TagProps) {
   )
 
   return (
-    <span className={className} {...rest}>
+    <span className={className} {...rest} style={getStyle(color, style)}>
       {children}
 
       {onRemove && (
