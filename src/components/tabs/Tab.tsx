@@ -4,6 +4,7 @@ export interface TabProps {
   label: string
   disabled?: boolean
   tab?: ReactNode
+  headerClassName?: string
 }
 
 const Tab: React.FC<TabProps> = (props) => {

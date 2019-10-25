@@ -1,3 +1,5 @@
+const hasOwn = {}.hasOwnProperty
+
 export function cn(...names: any[]): string {
   const result: string[] = []
 
@@ -5,15 +7,19 @@ export function cn(...names: any[]): string {
     const item: any = names[i]
 
     if (!item) {
-      continue;
+      continue
     }
 
-    if (Array.isArray(item) && item.length) {
+    const type: string = typeof item
+
+    if (type === 'string' || type === 'number') {
+      result.push(item)
+    } else if (Array.isArray(item) && item.length) {
       result.push(cn.apply(null, item))
     } else if ('object' === typeof item) {
-      for (let [key, value] of item) {
-        if (value) {
-          names.push(key)
+      for (let key in item) {
+        if (hasOwn.call(item, key) && item[key]) {
+          result.push(key)
         }
       }
     } else {

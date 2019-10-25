@@ -87,16 +87,14 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
       }
 
       const key: ReactText = child.key || i
-      const className = [
-        'eyzy-tabs-header__item',
-        key === activeTabKey ? 'active' : ''
-      ]
-        .filter(Boolean)
-        .join(' ')
+      const className = cn({
+        'eyzy-tabs-header__item': true,
+        'active': key === activeTabKey,
+      }, child.props.headerClassName)
 
       headers.push(
         <div className={className} onClick={() => this.handleChange(key)} key={key}>
-            { child.props.label }
+          { child.props.label }
         </div>
       )
     })

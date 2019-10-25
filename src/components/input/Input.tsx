@@ -22,7 +22,6 @@ function parseWidth(width: any): string | null {
 
   return null
 }
-console.log(55)
 
 export default class Input extends React.Component<InputProps> {
   handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -42,9 +41,6 @@ export default class Input extends React.Component<InputProps> {
   }
 
   render() {
-    
-    console.log(55111)
-
     const {
       className,
       intent,
