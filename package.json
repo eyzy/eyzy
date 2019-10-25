@@ -1,6 +1,6 @@
 {
   "name": "eyzy",
-  "version": "v0.0.3",
+  "version": "0.0.4",
   "author": "Kostiantyn",
   "description": "React UI Toolkit",
   "homepage": "https://github.com/eyzy/eyzy#readme",
@@ -26,7 +26,6 @@
     "url": "https://github.com/eyzy/eyzy/issues"
   },
   "files": [
-    "src",
     "dist",
     "es",
     "style.css"
