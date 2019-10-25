@@ -10,7 +10,7 @@ import fs from 'fs'
 import path from 'path'
 import pkg from './package.json'
 
-const sourcemap = 'production' !== process.env.NODE_ENV
+const isProd = 'production' === process.env.NODE_ENV
 
 const version = pkg.version
 const banner = `
@@ -21,41 +21,40 @@ const banner = `
  */
 `
 
-const config = {
-  input: 'src/index.ts',
-  external: ['react'],
-  output: [
-    {
-      file: pkg.main,
-      format: 'umd',
-      name: 'eyzy',
-      sourcemap: true,
-      banner
-    },
-    {
-      file: pkg.module,
-      format: 'es',
-      sourcemap: true,
-      banner
-    }
-  ],
-  cache: false,
-  plugins: [
-    typescript(),
-    external(),
-    scss({
-      output: (styles) => {
-        fs.writeFileSync(path.resolve('./style.css'), styles)
-      },
-    }),
-    url(),
-    babel({
-      exclude: ['node_modules/**', 'dist/index.es.js'],
-      plugins: [ 'external-helpers' ]
-    }),
-    resolve({ extensions: ['.jsx', '.js'] }),
-    commonjs()
-  ]
+let config
+
+if (isProd) {
+  config = {}
+} else {
+  config = {
+    input: 'src/index.ts',
+    external: ['react'],
+    output: [
+      {
+        file: pkg.main,
+        format: 'es',
+        sourcemap: true,
+        banner
+      }
+    ],
+    cache: false,
+    plugins: [
+      typescript(),
+      external(),
+      scss({
+        output: (styles) => {
+          fs.writeFileSync(path.resolve('./style.css'), styles)
+        },
+      }),
+      url(),
+      babel({
+        exclude: ['node_modules/**', 'dist/index.es.js'],
+        plugins: [ 'external-helpers' ]
+      }),
+      resolve({ extensions: ['.jsx', '.js'] }),
+      commonjs()
+    ]
+  }
 }
 
 export default config

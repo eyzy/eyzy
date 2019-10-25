@@ -14,6 +14,10 @@
   box-sizing: border-box;
   transition: all 0.1s ease-out 0s;
 
+  &::placeholder {
+    color: #a7b1bb;
+  }
+
   &[disabled] {
     background: $base-color;
   }

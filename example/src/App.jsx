@@ -1,6 +1,6 @@
 import React from 'react'
 import 'eyzy/style.css'
-import { BrowserRouter as Router, Redirect, Route, NavLink } from "react-router-dom"
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom"
 
 import Button from './components/ExampleButton'
 import Input from './components/ExampleInput'
