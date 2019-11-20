@@ -70,6 +70,10 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
   }
 
   handleChange = (key: ReactText) => {
+    if (key === this.state.activeKey) {
+      return
+    }
+
     if (this.props.onChange) {
       this.props.onChange(key)
     }

@@ -31,6 +31,12 @@ let config = [{
       name: 'Eyzy',
       sourcemap: true,
       banner
+    },
+    {
+      file: pkg.module,
+      format: 'es',
+      sourcemap: true,
+      banner
     }
   ],
   cache: false,
