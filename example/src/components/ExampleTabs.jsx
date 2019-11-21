@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tabs } from 'eyzy'
+import { Tabs } from 'eyzy/es/eyzy'
 
 const Tab = Tabs.Tab
 

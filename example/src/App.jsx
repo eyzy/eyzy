@@ -25,8 +25,8 @@ export default class App extends React.Component {
               <Route exact path="/button" component={Button} />
               <Route exact path="/input" component={Input} />
               <Route exact path="/checkbox" component={Checkbox} />
-              <Route exact path="/tabs" component={Tabs} />
               <Route exact path="/tag" component={Tag} />
+              <Route exact path="/tabs" component={Tabs} />
             </div>
           </Router>
       </div>

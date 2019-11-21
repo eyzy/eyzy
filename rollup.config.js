@@ -21,7 +21,42 @@ const banner = `
  */
 `
 
-let config
+let config = [{
+  input: 'src/index.ts',
+  external: ['react'],
+  output: [
+    {
+      file: pkg.main,
+      format: 'umd',
+      name: 'Eyzy',
+      sourcemap: true,
+      banner
+    },
+    {
+      file: pkg.module,
+      format: 'es',
+      sourcemap: true,
+      banner
+    }
+  ],
+  cache: false,
+  plugins: [
+    typescript(),
+    external(),
+    scss({
+      output: (styles) => {
+        fs.writeFileSync(path.resolve('./style.css'), styles)
+      },
+    }),
+    url(),
+    babel({
+      exclude: ['node_modules/**', 'dist/index.es.js'],
+      plugins: [ 'external-helpers' ]
+    }),
+    resolve({ extensions: ['.jsx', '.js'] }),
+    commonjs()
+  ]
+}]
 
 if (isProd) {
   config = {
@@ -31,6 +66,13 @@ if (isProd) {
       {
         file: pkg.main,
         format: 'umd',
+        name: 'eyzy',
+        sourcemap: true,
+        banner
+      },
+      {
+        file: pkg.module,
+        format: 'es',
         name: 'eyzy',
         sourcemap: true,
         banner
@@ -60,7 +102,7 @@ if (isProd) {
     external: ['react'],
     output: [
       {
-        file: pkg.main,
+        file: pkg.module,
         format: 'es',
         sourcemap: true,
         banner
@@ -85,5 +127,6 @@ if (isProd) {
     ]
   }
 }
+
 
 export default config
