@@ -24,7 +24,36 @@ const banner = `
 let config
 
 if (isProd) {
-  config = {}
+  config = {
+    input: 'src/index.ts',
+    external: ['react'],
+    output: [
+      {
+        file: pkg.main,
+        format: 'umd',
+        name: 'eyzy',
+        sourcemap: true,
+        banner
+      }
+    ],
+    cache: false,
+    plugins: [
+      typescript(),
+      external(),
+      scss({
+        output: (styles) => {
+          fs.writeFileSync(path.resolve('./style.css'), styles)
+        },
+      }),
+      url(),
+      babel({
+        exclude: ['node_modules/**', 'dist/index.es.js'],
+        plugins: [ 'external-helpers' ]
+      }),
+      resolve({ extensions: ['.jsx', '.js'] }),
+      commonjs()
+    ]
+  }
 } else {
   config = {
     input: 'src/index.ts',
