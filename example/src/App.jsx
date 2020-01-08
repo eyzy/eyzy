@@ -7,6 +7,7 @@ import Input from './components/ExampleInput'
 import Tabs from './components/ExampleTabs'
 import Tag from './components/ExampleTag'
 import Checkbox from './components/ExampleCheckbox'
+import Switch from './components/ExampleSwitch'
 
 export default class App extends React.Component {
   render() {
@@ -19,6 +20,7 @@ export default class App extends React.Component {
               <li><NavLink to="/checkbox">Checkbox</NavLink></li>
               <li><NavLink to="/tabs">Tabs</NavLink></li>
               <li><NavLink to="/tag">Tag</NavLink></li>
+              <li><NavLink to="/switch">Switch</NavLink></li>
             </ul>
 
             <div className="app-container">
@@ -27,6 +29,7 @@ export default class App extends React.Component {
               <Route exact path="/checkbox" component={Checkbox} />
               <Route exact path="/tag" component={Tag} />
               <Route exact path="/tabs" component={Tabs} />
+              <Route exact path="/switch" component={Switch} />
             </div>
           </Router>
       </div>
