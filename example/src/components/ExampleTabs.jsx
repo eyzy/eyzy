@@ -61,7 +61,17 @@ export default class Component extends React.Component {
         <Tabs key="5">
           <Tabs.Tab label={<strong>Tab with HTML 1</strong>} key={"a"}>Aaaaaaaa</Tabs.Tab>
           <Tabs.Tab headerClassName="red-color" label={<strong>Tab with HTML 2</strong>} key={"b"}>Bbbbbbbb<br />bbbbb</Tabs.Tab>
-        </Tabs>
+        </Tabs>,
+        <Tabs key="6" defaultActiveKey={'b'}>
+          <Tabs.Tab label="Item 10">Scrollable header 1</Tabs.Tab>
+          <Tabs.Tab label="Item 11">Scrollable header 2</Tabs.Tab>
+          <Tabs.Tab label="Item 12">Scrollable header 3</Tabs.Tab>
+          <Tabs.Tab label="Item 13">Scrollable header 4</Tabs.Tab>
+          <Tabs.Tab label="Item 14 ____ Long">Scrollable header 5</Tabs.Tab>
+          <Tabs.Tab label="Item 15">Scrollable header 6</Tabs.Tab>
+          <Tabs.Tab label="Item 16" key='b'>Scrollable header 7</Tabs.Tab>
+          <Tabs.Tab label="Item 17">Scrollable header 8</Tabs.Tab>
+        </Tabs>,
       ]
     )
   }

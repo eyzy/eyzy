@@ -22,6 +22,9 @@ const isTab = (component: any): boolean => {
 export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
   static Tab = Tab
 
+  header = React.createRef<HTMLDivElement>()
+  wrap = React.createRef<HTMLDivElement>()
+
   constructor(props: TabsProps) {
     super(props)
 
@@ -45,6 +48,34 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
     }
 
     return null
+  }
+
+  componentDidMount() {
+    this.tryHeaderScroll()
+  }
+
+  componentDidUpdate() {
+    this.tryHeaderScroll()
+  }
+
+  tryHeaderScroll = () => {
+    try {
+      const activeTab = this.wrap.current?.querySelector('.active')
+
+      if (!activeTab) {
+        return
+      }
+      
+      const headerEl = this.header.current!
+      const headerBounds = headerEl.getBoundingClientRect()
+      const tabBounds = activeTab.getBoundingClientRect()
+
+      const diff = (headerBounds.left + headerEl.clientWidth) - tabBounds.left
+
+      if (diff < tabBounds.width) {
+        headerEl.scrollLeft = diff + tabBounds.width
+      }
+    } catch (e) {}
   }
 
   getChildNodes = (children = this.props.children): React.ReactElement<TabProps>[] => {
@@ -111,8 +142,10 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
 
     return (
       <div className={className}>
-        <div className="eyzy-tabs-header">
-          { this.renderHeader() }
+        <div className="eyzy-tabs-header" ref={this.header}>
+          <div className="eyzy-tabs-wrap" ref={this.wrap}>
+            { this.renderHeader() }
+          </div>
         </div>
         <div className="eyzy-tabs-content">
           { this.getActiveContent() }
