@@ -72,6 +72,11 @@ export default class Component extends React.Component {
           <Tabs.Tab label="Item 16" key='b'>Scrollable header 7</Tabs.Tab>
           <Tabs.Tab label="Item 17">Scrollable header 8</Tabs.Tab>
         </Tabs>,
+        <Tabs>
+          <Tabs.Tab label="Уроки по абонементам"/>
+          <Tabs.Tab label="Поурочно"/>
+          <Tabs.Tab label="Групповой урок"/>
+        </Tabs>
       ]
     )
   }
