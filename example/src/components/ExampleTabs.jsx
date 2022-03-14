@@ -25,13 +25,18 @@ class TabContent extends React.Component {
 
 export default class Component extends React.Component {
   state = {
-    activeTabKey: 'tab22'
+    activeTabKey: 'tab22',
+    longActiveTabKey: 'c'
   }
 
   handleTabChange = (key) => {
     if (key !== 'tab22') {
       this.setState({ activeTabKey: key })
     } 
+  }
+
+  handleTabChangeLong = (key) => {
+    this.setState({ longActiveTabKey: key })
   }
 
   render() {
@@ -72,9 +77,13 @@ export default class Component extends React.Component {
           <Tabs.Tab label="Item 16" key='b'>Scrollable header 7</Tabs.Tab>
           <Tabs.Tab label="Item 17">Scrollable header 8</Tabs.Tab>
         </Tabs>,
-        <Tabs>
+        <Tabs activeKey={this.state.longActiveTabKey}  onChange={this.handleTabChangeLong}>
           <Tabs.Tab label="Уроки по абонементам"/>
           <Tabs.Tab label="Поурочно"/>
+          <Tabs.Tab label="Групповой урок"/>
+          <Tabs.Tab label="Групповой урок"/>
+          <Tabs.Tab label="Групповой урок"/>
+          <Tabs.Tab label="Групповой урок" key="c"/>
           <Tabs.Tab label="Групповой урок"/>
         </Tabs>
       ]
