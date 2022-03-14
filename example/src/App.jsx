@@ -10,8 +10,7 @@ import Checkbox from './components/ExampleCheckbox'
 import Switch from './components/ExampleSwitch'
 import Radio from './components/ExampleRadio'
 
-export default class App extends React.Component {
-  render() {
+export default function App() {
     return (
       <div className="app">
           <Router>
@@ -37,5 +36,4 @@ export default class App extends React.Component {
           </Router>
       </div>
     )
-  }
 }

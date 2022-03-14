@@ -90,3 +90,11 @@ p.active-example > .eyzy-btn:nth-child(even) {
 .eyzy-tag {
   margin-right: 5px;
 }
+
+.scr {
+  overflow: auto hidden;
+}
+
+.scr::-webkit-scrollbar {
+  display: none;
+}
