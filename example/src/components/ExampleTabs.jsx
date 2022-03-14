@@ -83,7 +83,7 @@ export default class Component extends React.Component {
           <Tabs.Tab label="Групповой урок"/>
           <Tabs.Tab label="Групповой урок"/>
           <Tabs.Tab label="Групповой урок"/>
-          <Tabs.Tab label="Групповой урок" key="c"/>
+          <Tabs.Tab label="Групповой урок"/>
           <Tabs.Tab label="Групповой урок"/>
         </Tabs>
       ]
