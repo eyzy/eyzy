@@ -1,8 +1,10 @@
 import React, { ReactText, HTMLAttributes } from 'react'
 import Tab, { TabProps } from './Tab'
 import { cn } from '../../common/classNames'
+import { debounce } from '../../common/debounce'
 
 export interface BaseTabsProps {
+  noContent?: boolean
   children: React.ReactElement<TabProps>[]
   activeKey?: ReactText
   onChange?: (activeKey: ReactText) => void
@@ -13,17 +15,44 @@ type TabsProps = Partial<HTMLAttributes<HTMLDivElement> & BaseTabsProps>
 
 interface TabsState {
   activeKey?: ReactText | null
+  isArrowLeftDisabled?: boolean,
+  isArrowRightDisabled?: boolean,
+  isArrowVisible?: boolean
+}
+
+interface ArrowProps {
+  onMouseDown: () => void
+  l?: boolean
+  disabled: boolean
 }
 
 const isTab = (component: any): boolean => {
   return component && component.type === Tab
 }
 
+const Arrow = (props: ArrowProps) => {
+  const btnClassName = cn('eyzy-tabs-arrow', {
+    l: props.l,
+    disabled: props.disabled
+  })
+
+  return (
+    <button className={btnClassName} onMouseDown={props.onMouseDown}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.218 19l-1.782-1.75 5.25-5.25-5.25-5.25 1.782-1.75 6.968 7-6.968 7z"/>
+      </svg>
+    </button>
+  )
+} 
+
 export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
   static Tab = Tab
 
+  _scrolling: boolean
+
   header = React.createRef<HTMLDivElement>()
   wrap = React.createRef<HTMLDivElement>()
+  scrollWrap = React.createRef<HTMLDivElement>()
 
   constructor(props: TabsProps) {
     super(props)
@@ -52,10 +81,19 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
 
   componentDidMount() {
     this.tryHeaderScroll()
+    this.setCtrlStates()
+
+    window.addEventListener('resize', this.handleWindowResize)
   }
 
-  componentDidUpdate() {
-    this.tryHeaderScroll()
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowResize)
+  }
+
+  componentDidUpdate(prevProps: Readonly<TabsProps>) {
+    if (this.props.activeKey !== undefined && prevProps.activeKey !== this.props.activeKey) {
+      this.tryHeaderScroll()
+    }
   }
 
   tryHeaderScroll = () => {
@@ -65,17 +103,42 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
       if (!activeTab) {
         return
       }
-      
-      const headerEl = this.header.current!
-      const headerBounds = headerEl.getBoundingClientRect()
-      const tabBounds = activeTab.getBoundingClientRect()
 
-      const diff = (headerBounds.left + headerEl.clientWidth) - tabBounds.left
+      const wrapBounds = this.wrap.current?.getBoundingClientRect()
+      const activeBounds = activeTab.getBoundingClientRect()
 
-      if (diff < tabBounds.width) {
-        headerEl.scrollLeft = diff + tabBounds.width
+      if (wrapBounds?.left > activeBounds.left) {
+        this.wrap.current?.scrollLeft -= wrapBounds?.left - activeBounds.left
+      } else if (wrapBounds?.right < activeBounds.right) {
+        this.wrap.current?.scrollLeft += activeBounds.right - wrapBounds?.right
       }
     } catch (e) {}
+  }
+
+  setCtrlStates = () => {
+    const container = this.wrap.current;
+    const wrapper = this.scrollWrap.current;
+
+    if (!container || !wrapper) {
+      return;
+    }
+
+    if (wrapper.clientWidth <= container.parentNode.clientWidth) {
+      return this.setState({
+        isArrowVisible: false
+      })
+    }
+
+    const isArrowLeftDisabled = container.scrollLeft === 0;
+    const isArrowRightDisabled = wrapper.clientWidth
+      ? parseInt(wrapper.clientWidth - (container.clientWidth + container.scrollLeft)) === 0
+      : false;
+
+    this.setState({
+      isArrowLeftDisabled,
+      isArrowRightDisabled,
+      isArrowVisible: true
+    });
   }
 
   getChildNodes = (children = this.props.children): React.ReactElement<TabProps>[] => {
@@ -100,6 +163,25 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
     return activeContent || (children ? children[0] : null)
   }
 
+  headerScrollerLeft = () => {
+    this.scrollEl(-1)
+  }
+
+  headerScrollerRight = () => {
+    this.scrollEl(1)
+  }
+
+  scrollEl = (direction: number, power: number = 0.7) => {
+    const container = this.wrap.current;
+    const left = container.clientWidth * power;
+
+    container.scrollTo({
+      top: 0,
+      left: container.scrollLeft + (direction * left),
+      behavior: 'smooth'
+    });
+  }
+
   handleChange = (key: ReactText) => {
     if (key === this.state.activeKey) {
       return
@@ -111,6 +193,9 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
 
     this.setState({ activeKey: key })
   }
+
+  handleWindowResize = debounce(this.setCtrlStates, 200)
+  handleHeaderScroll = debounce(this.setCtrlStates, 120)
 
   renderHeader() {
     const headers: React.ReactElement<HTMLDivElement>[] = []
@@ -138,18 +223,30 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
   }
 
   render() {
-    const className = cn('eyzy-tabs', this.props.className)
+    const {className, noContent} = this.props
+    const containerCn = cn('eyzy-tabs', className)
+    const {isArrowVisible, isArrowLeftDisabled, isArrowRightDisabled} = this.state
 
     return (
-      <div className={className}>
+      <div className={containerCn}>
         <div className="eyzy-tabs-header" ref={this.header}>
-          <div className="eyzy-tabs-wrap" ref={this.wrap}>
-            { this.renderHeader() }
+          {isArrowVisible && (
+            <Arrow l disabled={isArrowLeftDisabled} onMouseDown={this.headerScrollerLeft}/>
+          )}
+          <div className="eyzy-tabs-wrap" ref={this.wrap} onScroll={this.handleHeaderScroll}>
+            <div className="eyzy-tabs-scroll" ref={this.scrollWrap}>
+              { this.renderHeader() }
+            </div>
           </div>
+          {isArrowVisible && (
+            <Arrow disabled={isArrowRightDisabled} onMouseDown={this.headerScrollerRight}/>
+          )}
         </div>
-        <div className="eyzy-tabs-content">
-          { this.getActiveContent() }
-        </div>
+        {!noContent && (
+          <div className="eyzy-tabs-content">
+            { this.getActiveContent() }
+          </div>
+        )}
       </div>
     )
   }
