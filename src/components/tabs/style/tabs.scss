@@ -48,17 +48,18 @@
     &__item {
       cursor: pointer;
       padding: 10px;
-      opacity: 0.7;
+      color: #5f5f5f;
       position: relative;
       border-bottom: 2px solid transparent;
       white-space: nowrap;
 
       &:hover {
-        opacity: 1;
+        color: #101010;
       }
 
       &.active {
         border-bottom-color: $primary-color;
+        color: #101010;
       }
     }
   }
