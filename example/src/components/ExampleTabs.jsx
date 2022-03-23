@@ -67,7 +67,7 @@ export default class Component extends React.Component {
           <Tabs.Tab label={<strong>Tab with HTML 1</strong>} key={"a"}>Aaaaaaaa</Tabs.Tab>
           <Tabs.Tab headerClassName="red-color" label={<strong>Tab with HTML 2</strong>} key={"b"}>Bbbbbbbb<br />bbbbb</Tabs.Tab>
         </Tabs>,
-        <Tabs key="6" defaultActiveKey={'b'}>
+        <Tabs key="6" defaultActiveKey={'c'}>
           <Tabs.Tab label="Item 10">Scrollable header 1</Tabs.Tab>
           <Tabs.Tab label="Item 11">Scrollable header 2</Tabs.Tab>
           <Tabs.Tab label="Item 12">Scrollable header 3</Tabs.Tab>
@@ -76,16 +76,28 @@ export default class Component extends React.Component {
           <Tabs.Tab label="Item 15">Scrollable header 6</Tabs.Tab>
           <Tabs.Tab label="Item 16" key='b'>Scrollable header 7</Tabs.Tab>
           <Tabs.Tab label="Item 17">Scrollable header 8</Tabs.Tab>
+          <Tabs.Tab label="Item 18">Scrollable header 9</Tabs.Tab>
+          <Tabs.Tab label="Item 19">Scrollable header 10</Tabs.Tab>
+          <Tabs.Tab label="Item 20">Scrollable header 11</Tabs.Tab>
+          <Tabs.Tab label="Item 21">Scrollable header 12</Tabs.Tab>
+          <Tabs.Tab label="Item 22">Scrollable header 12</Tabs.Tab>
+          <Tabs.Tab label="Item 23" key="c">Scrollable header 12</Tabs.Tab>
+          <Tabs.Tab label="Item 24">Scrollable header 12</Tabs.Tab>
+          <Tabs.Tab label="Item 25">Scrollable header 12</Tabs.Tab>
         </Tabs>,
-        <Tabs activeKey={this.state.longActiveTabKey}  onChange={this.handleTabChangeLong}>
-          <Tabs.Tab label="Уроки по абонементам"/>
-          <Tabs.Tab label="Поурочно"/>
-          <Tabs.Tab label="Групповой урок"/>
-          <Tabs.Tab label="Групповой урок"/>
-          <Tabs.Tab label="Групповой урок"/>
-          <Tabs.Tab label="Групповой урок"/>
-          <Tabs.Tab label="Групповой урок"/>
-        </Tabs>
+        <div key="7" className='e'>
+          <button>|||</button>
+          <Tabs activeKey={this.state.longActiveTabKey} noContent onChange={this.handleTabChangeLong}>
+            <Tabs.Tab label="Уроки по абонементам"/>
+            <Tabs.Tab label="Поурочно"/>
+            <Tabs.Tab label="Групповой урок"/>
+            <Tabs.Tab label="Групповой урок"/>
+            <Tabs.Tab label="Групповой урок"/>
+            <Tabs.Tab label="Групповой урок"/>
+            <Tabs.Tab label="Групповой урок"/>
+          </Tabs>
+          <button>+</button>
+        </div>
       ]
     )
   }

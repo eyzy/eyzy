@@ -80,8 +80,7 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
   }
 
   componentDidMount() {
-    this.tryHeaderScroll()
-    this.setCtrlStates()
+    this.setCtrlStates(true)
 
     window.addEventListener('resize', this.handleWindowResize)
   }
@@ -98,24 +97,32 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
 
   tryHeaderScroll = () => {
     try {
-      const activeTab = this.wrap.current?.querySelector('.active')
+      const wrap = this.wrap.current
+      const activeTab = wrap?.querySelector('.active')
 
-      if (!activeTab) {
+      if (!activeTab || !wrap) {
         return
       }
 
-      const wrapBounds = this.wrap.current?.getBoundingClientRect()
+      const wrapBounds = wrap.getBoundingClientRect()
+      const wrapScrollLeft = wrap.scrollLeft
       const activeBounds = activeTab.getBoundingClientRect()
 
+      let nextScroll = null
+
       if (wrapBounds?.left > activeBounds.left) {
-        this.wrap.current?.scrollLeft -= wrapBounds?.left - activeBounds.left
+        nextScroll = wrapScrollLeft - (wrapBounds?.left - activeBounds.left)
       } else if (wrapBounds?.right < activeBounds.right) {
-        this.wrap.current?.scrollLeft += activeBounds.right - wrapBounds?.right
+        nextScroll = wrapScrollLeft + (activeBounds.right - wrapBounds.right)
+      }
+
+      if (nextScroll !== null) {
+        wrap.scrollTo({left: nextScroll, behavior: 'smooth'})
       }
     } catch (e) {}
   }
 
-  setCtrlStates = () => {
+  setCtrlStates = (needScroll?: boolean) => {
     const container = this.wrap.current;
     const wrapper = this.scrollWrap.current;
 
@@ -124,9 +131,10 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
     }
 
     if (wrapper.clientWidth <= container.parentNode.clientWidth) {
+      
       return this.setState({
         isArrowVisible: false
-      })
+      }, () => needScroll === true && this.tryHeaderScroll())
     }
 
     const isArrowLeftDisabled = container.scrollLeft === 0;
@@ -138,7 +146,7 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
       isArrowLeftDisabled,
       isArrowRightDisabled,
       isArrowVisible: true
-    });
+    }, () => needScroll === true && this.tryHeaderScroll())
   }
 
   getChildNodes = (children = this.props.children): React.ReactElement<TabProps>[] => {
@@ -191,7 +199,7 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
       this.props.onChange(key)
     }
 
-    this.setState({ activeKey: key })
+    this.setState({ activeKey: key }, this.tryHeaderScroll)
   }
 
   handleWindowResize = debounce(this.setCtrlStates, 200)

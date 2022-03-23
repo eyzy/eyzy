@@ -98,3 +98,17 @@ p.active-example > .eyzy-btn:nth-child(even) {
 .scr::-webkit-scrollbar {
   display: none;
 }
+
+.e {
+  overflow: hidden;
+  display: flex;
+}
+
+.e button {
+  flex: 0 0 30px;
+  margin: 0 10px;
+}
+
+.e .eyzy-tabs {
+  flex: 1 1 100%;
+}

@@ -4,6 +4,7 @@
 .eyzy-tabs {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   &-wrap {
     flex: 1 1 auto;
