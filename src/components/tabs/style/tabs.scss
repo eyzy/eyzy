@@ -6,6 +6,26 @@
   flex-direction: column;
   overflow: hidden;
 
+  &.vertical {
+    flex-direction: row;
+
+    .eyzy-tabs-scroll {
+      flex-direction: column;
+    }
+
+    .eyzy-tabs-header {
+      border-right: 1px solid #eee;
+      border-bottom: 0;
+
+      &__item {
+        &.active {
+          border-bottom-color: transparent;
+          border-right: 2px solid;
+        }
+      }
+    }
+  }
+
   &-wrap {
     flex: 1 1 auto;
     overflow: auto hidden;

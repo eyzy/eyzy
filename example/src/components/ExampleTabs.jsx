@@ -97,6 +97,15 @@ export default class Component extends React.Component {
             <Tabs.Tab label="Групповой урок"/>
           </Tabs>
           <button>+</button>
+        </div>,
+        <div ley="8" style={{marginTop: 20}}>
+          <Tabs vertical>
+            <Tabs.Tab label="Menu 1">Menu 1</Tabs.Tab>
+            <Tabs.Tab label="Menu 2">Menu 2</Tabs.Tab>
+            <Tabs.Tab label="Menu 3">Menu 3</Tabs.Tab>
+            <Tabs.Tab label="Menu 4">Menu 4</Tabs.Tab>
+            <Tabs.Tab label="Menu 5">Menu 5</Tabs.Tab>
+          </Tabs>
         </div>
       ]
     )

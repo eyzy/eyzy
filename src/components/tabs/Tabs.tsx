@@ -9,6 +9,7 @@ export interface BaseTabsProps {
   activeKey?: ReactText
   onChange?: (activeKey: ReactText) => void
   defaultActiveKey?: ReactText
+  vertical?: boolean
 }
 
 type TabsProps = Partial<HTMLAttributes<HTMLDivElement> & BaseTabsProps>
@@ -231,8 +232,8 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
   }
 
   render() {
-    const {className, noContent} = this.props
-    const containerCn = cn('eyzy-tabs', className)
+    const {className, noContent, vertical} = this.props
+    const containerCn = cn('eyzy-tabs', className, { vertical })
     const {isArrowVisible, isArrowLeftDisabled, isArrowRightDisabled} = this.state
 
     return (
