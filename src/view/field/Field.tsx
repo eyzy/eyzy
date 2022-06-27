@@ -9,14 +9,16 @@ interface FieldProps {
   fit?: boolean
   helpText?: React.ReactElement
   label?: React.ReactElement
+  error?: React.ReactElement
 }
 
-const Field: React.FC<FieldProps> = ({ label, helpText, children, fit, required }) => {
+const Field: React.FC<FieldProps> = ({ label, helpText, children, fit, required, error }) => {
   const id = useMemo(() => `e-${uid()}`, [])
   const classNames = cn(
     'e-field',
     {
-      fit
+      fit,
+      error
     }
   )
 
@@ -25,27 +27,33 @@ const Field: React.FC<FieldProps> = ({ label, helpText, children, fit, required 
     id
   })
 
-  if (label || helpText) {
-    return (
-      <div className={classNames}>
-        {label && (
-          <label className='e-label' htmlFor={id}>
-            {label}
-            {required && <span className='e-asterisk'>*</span>}
-          </label>
-        )}
+  return (
+    <div className={classNames}>
+      {label && (
+        <label className='e-label' htmlFor={id}>
+          {label}
+          {required && <span className='e-asterisk'>*</span>}
+        </label>
+      )}
 
-        {helpText && (
-          <div className='e-help'>{helpText}</div>
-        )}
+      <div className='e-ctrl'>{child}</div>
 
-        <div className='e-ctrl'>{child}</div>
-      </div>
-    )
-  }
+      {error && (
+        <div className='e-error'>{error}</div>
+      )}
+
+      {helpText && (
+        <div className='e-help'>{helpText}</div>
+      )}
+    </div>
+  )
 
   return (
-    <div className={classNames}>{child}</div>
+    <div className={classNames}>
+      <div className='e-ctrl'>
+        {child}
+      </div>
+    </div>
   )
 }
 

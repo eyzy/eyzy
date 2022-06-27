@@ -6,7 +6,7 @@
   @include add-base-border();
 
   min-height: 32px;
-  height: 100%;
+  height: auto;
   color: $input-text-color;
   background-color: $input-bg-color;
   padding: 3px 10px;

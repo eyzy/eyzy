@@ -54,7 +54,7 @@ console.log(value)
 
     return (
       <React.Fragment>
-        <Example label="Labeled">
+        <Example>
           <Input
             label={'Label'}
             helpText={helpText}
@@ -81,7 +81,7 @@ console.log(value)
           <Input autoFocus placeholder="AutoFocus"/>
         </Example>
         <Example label="Value; Condtolled + Value">
-          <Input value="AAAA" onChange={() => {}}/>
+          <Input value="AAAA" onChange={() => {}} error="Error TEXT"/>
           <Input defaultValue="Default Controlled" value={this.state.controlledValue1} onValueChange={this.handleChange1} />
           <Input value={this.state.controlledValue0} onChange={this.handleChange0} />
         </Example>

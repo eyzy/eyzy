@@ -14,6 +14,7 @@ function BaseInput(props: BaseInputProps, ref: Ref<any>) {
     fit,
     type,
     style,
+    error,
     helpText,
     label,
     onPressEnter,
@@ -68,9 +69,10 @@ function BaseInput(props: BaseInputProps, ref: Ref<any>) {
   }
 
   const ElementType: React.ElementType = type === 'textarea' ? 'textarea' : 'input'
+console.log(error);
 
   return (
-    <Field label={label} helpText={helpText} fit={fit} required={required}>
+    <Field label={label} helpText={helpText} fit={fit} required={required} error={error}>
       <FocusRing>
         <ElementType 
           {...rest} 
