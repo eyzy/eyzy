@@ -1,9 +1,12 @@
+
 $base-color: #efefef;
 $primary-color: #2100FF;
 $secondary-color: #dae2eb;
 $warning-color: #FF9505;
 $danger-color: #F20F22;
 $success-color: #2ECC40;
+
+$focus-color: rgb(20, 115, 230);
 
 $base-text-color: #333;
 $primary-text-color: #0052cc;
@@ -12,11 +15,20 @@ $warning-text-color: #f9a700;
 $danger-text-color: #de3207;
 $success-text-color: #2ecc40;
 
+$ctrl-min-width: 48px;
+$ctrl-height: 32px;
+$ctrl-line-height: 21px;
+
 $border-radius: 4px;
 $border-color: transparent;
-$border-width: 0;
+$border-width: 1px;
 
-$input-border-color: #b2b2b2;
+$input-text-color: rgb(75, 75, 75);
+$input-bg-color: rgb(255, 255, 255);
+$input-border-color: #cdcdcd;
+$input-border-hover-color: #b3b3b3;
+$input-border-focus-color: $focus-color;
+
 
 $line-height: 2.28571em;
 $line-height-sm: 1.6em; 
@@ -24,3 +36,8 @@ $line-height-lg: 2.97142em;
 
 $disabled-opacity: .4;
 $disabled-cursor: default;
+
+$label-line-height: 15.5px;
+$label-color: rgb(110, 110, 110);
+$label-font-size: 12px;
+$label-font-weight: 400;

@@ -41,6 +41,7 @@ body {
 .app-container {
   flex: 1 1 auto;
   overflow: hidden;
+  padding: 10px;
 }
 
 .add-margin {
@@ -111,4 +112,19 @@ p.active-example > .eyzy-btn:nth-child(even) {
 
 .e .eyzy-tabs {
   flex: 1 1 100%;
+}
+
+
+.exmpl {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.exmpl-label {
+  margin-bottom: 10px;
+}
+
+.exmpl-ctrl > * {
+  margin-right: 10px;
 }

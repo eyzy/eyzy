@@ -1,6 +1,6 @@
 {
   "name": "eyzy",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "author": "Kostiantyn",
   "description": "React UI Toolkit",
   "homepage": "https://github.com/eyzy/eyzy#readme",
@@ -30,7 +30,7 @@
     "es",
     "style.css"
   ],
-  "dependencies": {
+  "peerDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },

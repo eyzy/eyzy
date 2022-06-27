@@ -12,11 +12,11 @@
 
 @mixin add-base-border() {
   border-radius: $border-radius;
-  border: $border-width solid $border-color;
+  border: $border-width solid $input-border-color;
 }
 
 @mixin add-base-height() {
-  height: $line-height;
-  line-height: $line-height;
+  height: $ctrl-height;
+  line-height: $ctrl-line-height;
   box-sizing: border-box;
 }

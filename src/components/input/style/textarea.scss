@@ -1,12 +1,14 @@
 @import "../../../common/style/variables.scss";
 @import "../../../common/style/mixins.scss";
 
-.e-input {
+.e-textarea {
   @include flex-inline();
   @include add-base-border();
 
-  min-height: 32px;
-  height: 100%;
+  resize: vertical;
+  height: auto;
+  min-height: 56px;
+  overflow: auto;
   color: $input-text-color;
   background-color: $input-bg-color;
   padding: 3px 10px;
@@ -14,12 +16,16 @@
   text-indent: 0;
   width: 100%;
   box-sizing: border-box;
-  transition: all 0.1s ease-out 0s;
+  transition: border 0.1s ease-out 0s;
   outline: none;
   text-overflow: ellipsis;
-  overflow: visible;
   -webkit-appearance: none;
   -moz-appearance: textfield;
+
+  &.auto-height {
+    overflow: hidden;
+    resize: none;
+  }
 
   &::placeholder {
     color: #a7b1bb;
@@ -36,15 +42,5 @@
   &:focus {
     border-color: $input-border-focus-color;
     box-shadow: none;
-  }
-
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  &[type=number] {
-    -moz-appearance: textfield;
   }
 }
