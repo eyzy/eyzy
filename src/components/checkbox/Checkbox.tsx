@@ -1,80 +1,66 @@
-import React, { InputHTMLAttributes, ChangeEvent } from 'react'
-import { cn } from '../../common/classNames'
+import React, { forwardRef, Ref, useState, useMemo } from 'react'
+import { BaseCheckboxProps } from './types/BaseCheckboxProps'
+import Field from '../../view/field/Field'
+import { uid } from '../../common/uid'
 
-export interface BaseCheckboxProps {
-  align: 'left' | 'right'
-}
+function Checkbox(props: BaseCheckboxProps, ref: Ref<any>) {
+  const {
+    className,
+    width,
+    required,
+    error,
+    helpText,
+    label,
+    onChange,
+    children,
+    ...rest
+  } = props
 
-export type CheckboxProps = Partial<InputHTMLAttributes<any> & BaseCheckboxProps>
+  const id = useMemo(() => `e-${uid()}`, [])
+  const [checked, setChecked] = useState<boolean>(
+    'checked' in props 
+      ? !!props.checked 
+      : !!props.defaultChecked
+  )
 
-interface State {
-  checked: boolean
-}
-
-export default class Checkbox extends React.Component<CheckboxProps, State> {
-  constructor(props: CheckboxProps) {
-    super(props)
-
-    const checked: boolean | undefined = 'checked' in props 
-      ? props.checked 
-      : props.defaultChecked
-
-    this.state = {
-      checked: checked || false
-    }
+  const handleChange = (e) => {
+    setChecked(e.target.checked)
   }
 
-  static getDerivedStateFromProps(props: CheckboxProps, state: State) {
-    if ('checked' in props) {
-      return {
-        ...state,
-        checked: props.checked,
-      }
-    }
+  const Component = (
+    <input
+      type="checkbox"
+      onChange={handleChange}
+      checked={checked}
+      id={id}
+      {...rest}
+    />
+  )
 
-    return null
-  }
-
-  handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (this.props.onChange) {
-      this.props.onChange(e)
-    } else {
-      this.setState({ checked: e.target.checked })
-    }
-  }
-
-  render() {
-    const {
-      className,
-      children,
-      align,
-      defaultChecked,
-      ...rest
-    } = this.props
-  
-    const { checked } = this.state
-
-    const classNames = cn(
-      'eyzy-checkbox',
-      'right' === align ? 'eyzy-checkbox--right' : null,
-      checked ? 'checked' : null,
-      className
-    )
-
-    return (
-        <label className={classNames}>
-          <input
-            type="checkbox"
-            onChange={this.handleChange}
-            checked={checked}
-            {...rest}
-          />
-          <span className="eyzy-checkbox-inner" />
-          {children && (
-            <span className="eyzy-checkbox-label">{children}</span>
+  return (
+    <Field
+      label={label} 
+      ctrlClassName='e-checkbox'
+      helpText={helpText} 
+      required={required} 
+      error={error} 
+      component={Component} 
+    >
+      <span className="e-outer">
+        <span className="e-inner">
+          {checked && (
+            <svg focusable="false" role="img">
+              <path d="M3.788 9A.999.999 0 0 1 3 8.615l-2.288-3a1 1 0 1 1 1.576-1.23l1.5 1.991 3.924-4.991a1 1 0 1 1 1.576 1.23l-4.712 6A.999.999 0 0 1 3.788 9z"></path>
+            </svg>
           )}
-        </label>
-    )
-  }
+        </span>
+      </span>
 
+      {children && (
+        <span className='e-checkbox-label'>{children}</span>
+      )}
+    </Field>
+  )
 }
+
+export default forwardRef(Checkbox)

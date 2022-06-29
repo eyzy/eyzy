@@ -6,11 +6,12 @@ export default function FocusRing(props: any) {
   const {children, ...rest} = props
   const child = React.Children.only(children)
   const isFocused = useFocusRing(rest.id, child.props.autoFocus)
-  
+
   const childProps = {
     ...rest,
     ...child.props,
     className: cn(
+      props.className,
       child.props.className, 
       {
         'e-ring': isFocused

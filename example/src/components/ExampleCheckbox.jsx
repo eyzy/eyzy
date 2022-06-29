@@ -1,5 +1,6 @@
 import React from 'react'
 import { Checkbox } from 'eyzy'
+import Example from '../Example'
 
 /* eslint-disable */
 export default class CheckboxExamples extends React.Component {
@@ -15,27 +16,19 @@ export default class CheckboxExamples extends React.Component {
 
   render() {
     return (
-      [
-        <p key="-1">
-          <Checkbox checked={true} />&nbsp;
-          <Checkbox />
-        </p>,
-        <p key="0">
-          <Checkbox>
-            Lalalal
-          </Checkbox>
-        </p>,
-        <p key="1">
-          <Checkbox align="right" defaultChecked={true}>
-            Right
-          </Checkbox>
-        </p>,
-        <p key="2">
-          <Checkbox align="right" checked={this.state.checked} onChange={this.handleChange}>
-            On Change
-          </Checkbox>
-        </p>,
-      ]
+      <React.Fragment>
+        <Example>
+          <Checkbox label="Form Label">Child Text</Checkbox>
+        </Example>
+
+        <Example label="Without FORM label">
+          <Checkbox>Checkbox Label</Checkbox>
+        </Example>
+
+        <Example label="Autofocus">
+          <Checkbox autoFocus />
+        </Example>
+      </React.Fragment>
     )
   }
 }

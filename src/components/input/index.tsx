@@ -1,4 +1,4 @@
-import Input from './Input'
+import Input from './BaseInput'
 import TextArea from './TextArea'
 import NumberInput from './NumberInput'
 import InputGroup from './group'

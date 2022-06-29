@@ -2,6 +2,20 @@ import React from '../../node_modules/react'
 import Example from '../Example'
 import { NumberInput, Input, TextArea } from 'eyzy'
 
+const getRenderer = (type, props) => {
+  if (type === 'text') {
+    return React.createElement(Input, props)
+  } else if (type === 'area') {
+    return TextArea
+  }
+
+  return NumberInput
+}
+
+const RenderComponent = React.memo(({ type, value, name, onChange }) => {
+  return getRenderer(type, { value, name, onChange, fit: true })
+})
+
 /* eslint-disable */
 export default class InputExamples extends React.Component {
   state = {
@@ -10,16 +24,17 @@ export default class InputExamples extends React.Component {
     numberValue: 'ahahha'
   }
 
+  handleChangeKey = (key) => value => this.setState({[key]: value})
+
   handleChangeNumber = (value) => {
     if (value > 100) {
       return
     }
-    console.log(value)
+
     this.setState({ numberValue: value })
   }
 
   handleChange0 = (value) => {
-console.log(value)
     this.setState({ controlledValue0: value })
   }
 
@@ -54,6 +69,10 @@ console.log(value)
 
     return (
       <React.Fragment>
+        <Example label="As a Component">
+          <RenderComponent type="text" value={this.state['a']} onChange={this.handleChangeKey('a')} name="a" />
+        </Example>
+
         <Example>
           <Input
             label={'Label'}
@@ -69,7 +88,7 @@ console.log(value)
           />
         </Example>
         <Example>
-          <Input label="No label; Placeholder; Width: 350" placeholder="Ppppppppppppppppppplaceholder" width="350"/>
+          <Input label="No label; Placeholder; Width: 350" error="And error..." placeholder="Ppppppppppppppppppplaceholder" width="350"/>
         </Example>
         <Example label="User onEsc and onEnter + autoFocus">
           <Input
@@ -82,7 +101,7 @@ console.log(value)
         </Example>
         <Example label="Value; Condtolled + Value">
           <Input value="AAAA" onChange={() => {}} error="Error TEXT"/>
-          <Input defaultValue="Default Controlled" value={this.state.controlledValue1} onValueChange={this.handleChange1} />
+          <Input defaultValue="Default Controlled" value={this.state.controlledValue1} onChange={this.handleChange1} />
           <Input value={this.state.controlledValue0} onChange={this.handleChange0} />
         </Example>
         <Example>
@@ -100,7 +119,7 @@ console.log(value)
         </Example>
         <Example>
           <NumberInput label="Number UnCotrolled" required />
-          <NumberInput label="Cotrolled (max 100)" value={this.state.numberValue} onValueChange={this.handleChangeNumber} />
+          <NumberInput label="Cotrolled (max 100)" value={this.state.numberValue} onChange={this.handleChangeNumber} />
         </Example>
       </React.Fragment>
     )

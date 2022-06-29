@@ -1,10 +1,7 @@
 import React, { InputHTMLAttributes } from "react"
+import { ViewField } from '../../../view/field/types/ViewField'
 
-interface BaseInput {
-  fit?: boolean
-  label?: React.ReactElement
-  helpText?: React.ReactElement
-  error?: React.ReactElement
+type BaseInput = ViewField & {
   width?: number | string
   type?: string
   onPressEnter?: React.KeyboardEventHandler<HTMLInputElement>

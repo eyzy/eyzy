@@ -1,7 +1,6 @@
-import React, { forwardRef, Ref, useEffect, useState } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import { BaseInputProps } from './types/BaseInputProps'
 import Field from '../../view/field/Field'
-import FocusRing from '../../view/focusRing/FocusRing'
 import { cn } from '../../common/classNames'
 import { isEsc, isEnter } from '../../common/keyboard'
 import { parseWidth } from '../../common/dom'
@@ -24,23 +23,13 @@ function BaseInput(props: BaseInputProps, ref: Ref<any>) {
     ...rest
   } = props
 
-  const [value, setValue] = useState(props.value || props.defaultValue || '')
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const val: string = e.target.value
 
     if (onChange) {
       onChange(val, e)
-    } else {
-      setValue(val)
     }
   }
-
-  useEffect(() => {
-    if (onChange) { // controlled
-      setValue(props.value || '')
-    }
-  }, [props.value])
 
   const handleKeyDown = (e: any) => {
     if (onPressEnter && isEnter(e)) {
@@ -69,23 +58,27 @@ function BaseInput(props: BaseInputProps, ref: Ref<any>) {
   }
 
   const ElementType: React.ElementType = type === 'textarea' ? 'textarea' : 'input'
-console.log(error);
+  const Component = (
+    <ElementType 
+      {...rest} 
+      ref={ref}
+      type={type || 'text'}
+      className={classNames} 
+      style={elemStyle}
+      onChange={handleChange}
+      onKeyDown={handleKeyDown}
+    />
+  )
 
   return (
-    <Field label={label} helpText={helpText} fit={fit} required={required} error={error}>
-      <FocusRing>
-        <ElementType 
-          {...rest} 
-          ref={ref}
-          value={value}
-          type={type || 'text'}
-          className={classNames} 
-          style={elemStyle}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-        />
-      </FocusRing>
-    </Field>
+    <Field 
+      label={label} 
+      helpText={helpText} 
+      fit={fit} 
+      required={required} 
+      error={error} 
+      component={Component} 
+    />
   )
 }
 

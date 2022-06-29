@@ -74,9 +74,6 @@
 }
 
 .e-ctrl {
-  line-height: $ctrl-line-height;
-  min-width: $ctrl-min-width;
-  min-height: $ctrl-height;
+  position: relative;
 }
-
 
