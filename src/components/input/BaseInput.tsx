@@ -7,15 +7,13 @@ import { parseWidth } from '../../common/dom'
 
 function BaseInput(props: BaseInputProps, ref: Ref<any>) {
   const {
+    processValue,
+
     className,
     width,
-    required,
     fit,
     type,
     style,
-    error,
-    helpText,
-    label,
     onPressEnter,
     onPressEsc,
     onKeyDown,
@@ -24,7 +22,7 @@ function BaseInput(props: BaseInputProps, ref: Ref<any>) {
   } = props
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const val: string = e.target.value
+    const val: string = processValue ? processValue(e.target.value) : e.target.value
 
     if (onChange) {
       onChange(val, e)
@@ -58,7 +56,8 @@ function BaseInput(props: BaseInputProps, ref: Ref<any>) {
   }
 
   const ElementType: React.ElementType = type === 'textarea' ? 'textarea' : 'input'
-  const Component = (
+  
+  return (
     <ElementType 
       {...rest} 
       ref={ref}

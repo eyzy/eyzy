@@ -1,6 +1,6 @@
 import React from '../../node_modules/react'
 import Example from '../Example'
-import { NumberInput, Input, TextArea } from 'eyzy'
+import { NumberInput, Input, TextArea, Field } from 'eyzy'
 
 const getRenderer = (type, props) => {
   if (type === 'text') {
@@ -9,7 +9,7 @@ const getRenderer = (type, props) => {
     return TextArea
   }
 
-  return NumberInput
+  return React.createElement(NumberInput, props)
 }
 
 const RenderComponent = React.memo(({ type, value, name, onChange }) => {
@@ -21,10 +21,16 @@ export default class InputExamples extends React.Component {
   state = {
     controlledValue0: '',
     controlledValue1: undefined,
-    numberValue: 'ahahha'
+    numberValue: 'ahahha',
+    valuedKeys: {}
   }
 
-  handleChangeKey = (key) => value => this.setState({[key]: value})
+  handleChangeKey = (key) => value => this.setState({
+    valuedKeys: {
+      ...this.state.valuedKeys,
+      [key]: value
+    }
+  })
 
   handleChangeNumber = (value) => {
     if (value > 100) {
@@ -50,6 +56,10 @@ export default class InputExamples extends React.Component {
     console.log('Esc is pressed', e)
   }
 
+  reset = () => {
+    this.setState({valuedKeys: {}})
+  }
+
   render() {
     const helpText = (
       <ul>
@@ -69,24 +79,77 @@ export default class InputExamples extends React.Component {
 
     return (
       <React.Fragment>
-        <Example label="As a Component">
-          <RenderComponent type="text" value={this.state['a']} onChange={this.handleChangeKey('a')} name="a" />
+        <Example><button onClick={this.reset}>Reset</button></Example>
+
+        <Example label="As a Component (Controlled)">
+          <RenderComponent type="text" value={this.state.valuedKeys['a'] || ''} onChange={this.handleChangeKey('a')} />
+        </Example>
+
+        <Example label="Fit; Uncontrolled">
+          <Input fit />
+        </Example>
+        <Example label="Value was undefined; Controlled">
+          <Input required width="350" value={this.state.valuedKeys.b || ''} onChange={this.handleChangeKey('b')}/>
+        </Example>
+
+        <Example label="User onEsc and onEnter + Default value; Uncontrolled">
+          <Input
+            onPressEnter={this.logEnterPress}
+            onPressEsc={this.logEscPress}
+            defaultValue="DEFAULT_VALUE"
+          />
+        </Example>
+
+        <Example label="Default value; With value; Controlled; Blur">
+          <Input
+            defaultValue="DEFAULT_VALUE"
+            onBlur={(e) => console.log(`Blur: ${e.target.value}`)}
+            onChange={(value) => console.log(`Change: ${value}`)}
+          />
+        </Example>
+
+        <Example label="AutoFocus">
+          <Input autoFocus placeholder="AutoFocus" fit/>
         </Example>
 
         <Example>
-          <Input
-            label={'Label'}
-            helpText={helpText}
-            fit
-          />
+          <Input value="READ_ONLY" readOnly/>
         </Example>
         <Example>
-          <Input
+          <Input value="DISABLED" disabled/>
+        </Example>
+
+        <Example>
+          <Field
+            label={"With field"}
             required
-            label={<div><strong>A</strong>BC</div>}
-            fit
+            component={<Input />}
           />
         </Example>
+
+        <Example  label="TextArea label">
+          <TextArea value={this.state.valuedKeys.d || ''} placeholder="LALALLA" onChange={this.handleChangeKey('d')}/>
+        </Example>
+        <Example>
+          <TextArea label="TextArea FIT" fit />
+        </Example>
+        <Example label="Auto Height">
+          <TextArea autoHeight fit defaultValue={autoHeightDefaultValue}/>
+        </Example>
+
+        <Example label="Number UnCotrolled + DEFAULT_VALUE">
+          <NumberInput label="Number UnCotrolled" defaultValue="300" />
+        </Example>
+        <Example label="Number UnCotrolled">
+          <NumberInput label="Number UnCotrolled" value="300" />
+        </Example>
+        <Example label="Number Cotrolled">
+          <NumberInput value={this.state.valuedKeys.e || ''} onChange={this.handleChangeKey('e')} />
+        </Example>
+        <Example label="Number Cotrolled (As Component)">
+          <RenderComponent type="number" value={this.state.valuedKeys.f || ''} onChange={this.handleChangeKey('f')} />
+        </Example>
+        {/**
         <Example>
           <Input label="No label; Placeholder; Width: 350" error="And error..." placeholder="Ppppppppppppppppppplaceholder" width="350"/>
         </Example>
@@ -121,6 +184,7 @@ export default class InputExamples extends React.Component {
           <NumberInput label="Number UnCotrolled" required />
           <NumberInput label="Cotrolled (max 100)" value={this.state.numberValue} onChange={this.handleChangeNumber} />
         </Example>
+         */}
       </React.Fragment>
     )
   }

@@ -128,3 +128,13 @@ p.active-example > .eyzy-btn:nth-child(even) {
 .exmpl-ctrl > * {
   margin-right: 10px;
 }
+
+.exmpl button {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .app-nav {
+    display: none;
+  }
+}

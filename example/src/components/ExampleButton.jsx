@@ -1,4 +1,5 @@
 import React from 'react'
+import Example from '../Example'
 import { Button } from 'eyzy'
 
 const ButtonGroup = Button.Group
@@ -6,6 +7,19 @@ const ButtonGroup = Button.Group
 /* eslint-disable */
 export default class ButtonExamples extends React.Component {
   render() {
+
+    return (
+      <React.Fragment>
+        <Example label="Primary">
+          <Button variant="primary">Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button>Default</Button>
+          <Button variant="minimal">Minimal</Button>
+        </Example>
+        
+      </React.Fragment>
+    )
+
     return (
       [
         <p key="0">

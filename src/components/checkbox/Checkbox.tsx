@@ -27,25 +27,16 @@ function Checkbox(props: BaseCheckboxProps, ref: Ref<any>) {
     setChecked(e.target.checked)
   }
 
-  const Component = (
-    <input
-      type="checkbox"
-      onChange={handleChange}
-      checked={checked}
-      id={id}
-      {...rest}
-    />
-  )
-
   return (
-    <Field
-      label={label} 
-      ctrlClassName='e-checkbox'
-      helpText={helpText} 
-      required={required} 
-      error={error} 
-      component={Component} 
-    >
+    <div className='e-checkbox'>
+      <input
+        type="checkbox"
+        onChange={handleChange}
+        checked={checked}
+        id={id}
+        {...rest}
+      />
+      
       <span className="e-outer">
         <span className="e-inner">
           {checked && (
@@ -59,7 +50,7 @@ function Checkbox(props: BaseCheckboxProps, ref: Ref<any>) {
       {children && (
         <span className='e-checkbox-label'>{children}</span>
       )}
-    </Field>
+    </div>
   )
 }
 

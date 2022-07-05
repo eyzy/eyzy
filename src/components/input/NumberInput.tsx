@@ -5,10 +5,14 @@ import { isMob } from '../../common/is'
 
 const INT_MATCH = /^-?(\d)+/
 
-const processValue = (v: any, isInt?: boolean) => {
+const toNumber = (v: any, isInt?: boolean) => {
   if (v === '-') {
     return '-'
   }
+
+  v = v
+    .replace(/\s/g, '')
+    .replace(/,/g, '.')
 
   if (isInt) {
     return v.match(INT_MATCH)?.[0] || ''
@@ -22,15 +26,19 @@ const processValue = (v: any, isInt?: boolean) => {
 }
 
 export default React.memo(function NumberInput(props: NumberInputProps) {
-  const value = undefined !== props.value 
-    ? processValue(props.value, props.isInt)
-    : ''
+  const {
+    isInt,
+    ...rest
+  } = props
+
+  const processValue = (val: any) => toNumber(val, isInt)
 
   return (
     <BaseInput 
-      {...props} 
-      type={isMob() ? 'number' : 'text'}
-      value={value || ''}
+      {...rest} 
+      type={'text'}
+      inputMode={isMob() ? 'decimal' : 'text'}
+      processValue={processValue}
     />
   )
 })

@@ -20,7 +20,7 @@ interface FieldProps {
 const Field: React.FC<FieldProps> = ({ component, children, ctrlClassName, label, helpText, fit, required, error }) => {
   const id = useMemo(() => `e-${uid()}`, [])
 
-  const isFocused = useFocusRing(id, component.props.autoFocus)
+  const isFocused = component ? useFocusRing(id, component.props.autoFocus) : false
   const classNames = cn(
     'e-field',
     {
@@ -34,17 +34,19 @@ const Field: React.FC<FieldProps> = ({ component, children, ctrlClassName, label
     ctrlClassName
   )
 
-  const child = React.cloneElement(component, {
-    id,
-    className: cn(
-      component.props.className,
-      {
-        'e-ring': isFocused
-      }
-    )
-  })
+  const child = component
+    ? React.cloneElement(component, {
+      id,
+      className: cn(
+        component.props.className,
+        {
+          'e-ring': isFocused
+        }
+      )
+    })
+    : null
 
-  const allowHtmlFor = component.props.type !== 'checkbox'
+  const allowHtmlFor = component ? component.props.type !== 'checkbox' : false
 
   return (
     <div className={classNames}>
