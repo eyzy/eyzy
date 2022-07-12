@@ -1,7 +1,8 @@
-import React, { forwardRef, Ref, useState, useMemo } from 'react'
+import React, { forwardRef, Ref, useState, useMemo, useEffect } from 'react'
+import { useFocusRing } from '../../view/focusRing/useFocusRing'
 import { BaseCheckboxProps } from './types/BaseCheckboxProps'
-import Field from '../../view/field/Field'
 import { uid } from '../../common/uid'
+import { cn } from 'src/common/classNames'
 
 function Checkbox(props: BaseCheckboxProps, ref: Ref<any>) {
   const {
@@ -11,8 +12,11 @@ function Checkbox(props: BaseCheckboxProps, ref: Ref<any>) {
     error,
     helpText,
     label,
-    onChange,
+    autoFocus,
     children,
+    defaultChecked,
+    useRing,
+    onChange,
     ...rest
   } = props
 
@@ -23,21 +27,48 @@ function Checkbox(props: BaseCheckboxProps, ref: Ref<any>) {
       : !!props.defaultChecked
   )
 
+  const isFocused = useFocusRing(id, !!autoFocus)
+  const classNames = cn(
+    'e-checkbox',
+    className
+  )
+
+  const eOuterClassName = cn(
+    'e-outer',
+    {
+      'e-ring': useRing && isFocused
+    }
+  )
+
   const handleChange = (e) => {
     setChecked(e.target.checked)
+
+    if (onChange) {
+      onChange(e.target.checked)
+    }
   }
 
+  useEffect(() => {
+    if (props.checked === undefined) {
+      setChecked(!!props.defaultChecked)
+    } else (
+      setChecked(props.checked)
+    )
+  }, [props.checked, props.defaultChecked])
+
   return (
-    <div className='e-checkbox'>
+    <div className={classNames}>
       <input
         type="checkbox"
         onChange={handleChange}
         checked={checked}
         id={id}
+        autoFocus={autoFocus}
+        ref={ref}
         {...rest}
       />
-      
-      <span className="e-outer">
+
+      <span className={eOuterClassName}>
         <span className="e-inner">
           {checked && (
             <svg focusable="false" role="img">

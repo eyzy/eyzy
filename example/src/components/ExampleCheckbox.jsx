@@ -1,5 +1,5 @@
 import React from 'react'
-import { Checkbox } from 'eyzy'
+import { Checkbox, Field } from 'eyzy'
 import Example from '../Example'
 
 /* eslint-disable */
@@ -8,9 +8,9 @@ export default class CheckboxExamples extends React.Component {
     checked: true
   }
 
-  handleChange = (e) => {
+  handleChange = (checked) => {
     this.setState({
-      checked: e.target.checked
+      checked
     })
   }
 
@@ -18,15 +18,19 @@ export default class CheckboxExamples extends React.Component {
     return (
       <React.Fragment>
         <Example>
-          <Checkbox label="Form Label">Child Text</Checkbox>
+          <Checkbox useRing>Child Text</Checkbox>
         </Example>
 
         <Example label="Without FORM label">
-          <Checkbox>Checkbox Label</Checkbox>
+          <Checkbox 
+            onChange={this.handleChange} 
+            checked={this.state.checked}>
+              Checkbox Label
+          </Checkbox>
         </Example>
 
         <Example label="Autofocus">
-          <Checkbox autoFocus />
+          <Checkbox autoFocus useRing />
         </Example>
       </React.Fragment>
     )
